@@ -8,11 +8,26 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import axios from 'axios';
 
 @Component({
   components: {
     HelloWorld,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  posts: any =  '';
+  errors: any = [];
+
+   created() {
+     axios.get('http://demo4528318.mockable.io/demojson')
+    .then(response => {
+      this.posts = response.data;
+			console.log('TCL: Home -> privatecreated -> this.posts', this.posts)
+    })
+    .catch((e: any) => {
+      this.errors.push(e);
+    });
+  }
+}
 </script>
