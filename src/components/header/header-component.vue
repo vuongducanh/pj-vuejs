@@ -24,7 +24,29 @@
           <a href="#">Ưu đãi cho gia đình</a>
         </li>
          <li class="header__link-item">
-          <a href="#">Agoda Homes</a>
+          <a href="#">agoda Homes</a>
+        </li>
+      </ul>
+      <div class="header__EllipsisLinkContainer">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="header__item-right">
+      <ul class="header__subgroup">
+        <li class="header__group">
+          <div class="header__language"></div>
+          <div class="header__currency-trigger">đ</div>
+        </li>
+        <li class="header__group">
+          <button class="header__group-signin">
+            Đăng nhập
+          </button>
+          <a href="#" class="header__group-signup">
+            Tạo tài khoản
+          </a>
         </li>
       </ul>
     </div>
@@ -32,8 +54,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import "./header-conponent.scss";
+import { Vue } from "vue-property-decorator";
+import "./header-component.scss";
 
 export default class HeaderComponent extends Vue {}
 </script>

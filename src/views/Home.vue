@@ -7,6 +7,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HeaderComponent from '@/components/header/header-component.vue';
+import "./home.scss"
 import axios from 'axios';
 
 @Component({
@@ -19,7 +20,7 @@ export default class Home extends Vue {
   errors: any = [];
 
    created() {
-    this.getdata()
+    this.getdata();
   }
 
   getdata() {
