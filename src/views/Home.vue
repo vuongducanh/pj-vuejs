@@ -1,20 +1,24 @@
 <template>
-  <div class="home">
-    <header-component></header-component>
+  <div id="home">
+     <HeaderComponent></HeaderComponent>
+     <HeaderSearchComponent></HeaderSearchComponent>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HeaderComponent from '@/components/header/header-component.vue';
+import HeaderComponent from '../components/header/header-component.vue';
+import HeaderSearchComponent from '../components/header-search/header-search-component.vue';
 import "./home.scss"
 import axios from 'axios';
 
 @Component({
   components: {
-    HeaderComponent
+    HeaderComponent,
+    HeaderSearchComponent
   },
 })
+
 export default class Home extends Vue {
   posts: any =  '';
   errors: any = [];
@@ -27,7 +31,6 @@ export default class Home extends Vue {
      axios.get('http://demo4528318.mockable.io/demojson')
     .then(response => {
       this.posts = response.data;
-			console.log('TCL: Home -> privatecreated -> this.posts', this.posts)
     })
     .catch((e: any) => {
       this.errors.push(e);

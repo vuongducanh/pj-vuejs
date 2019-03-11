@@ -44,7 +44,7 @@
           <button class="header__group-signin">
             Đăng nhập
           </button>
-          <a href="#" class="header__group-signup">
+          <a href="#" class="header__group-signup" @click="sentData()">
             Tạo tài khoản
           </a>
         </li>
@@ -54,8 +54,16 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import "./header-component.scss";
 
-export default class HeaderComponent extends Vue {}
+@Component
+export default class HeaderComponent extends Vue {
+  data: number = 2;
+
+  sentData() {
+    this.data++;
+    this.$root.$emit('mess',  this.data);
+  }
+}
 </script>
