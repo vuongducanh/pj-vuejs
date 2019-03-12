@@ -1,7 +1,7 @@
 <template>
   <div id="home">
-     <HeaderComponent></HeaderComponent>
-     <HeaderSearchComponent></HeaderSearchComponent>
+     <header-component></header-component>
+     <header-search-component></header-search-component>
   </div>
 </template>
 
