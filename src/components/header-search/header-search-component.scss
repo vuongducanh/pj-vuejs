@@ -1,0 +1,14 @@
+.header-search {
+  width: 100%;
+  background-color: #515b62;
+
+
+
+  @media screen and (min-width: 1440px) {
+    &__content {
+      width: 1400px;
+      padding: 0;
+      margin: 0 auto;
+    }
+  }
+}
