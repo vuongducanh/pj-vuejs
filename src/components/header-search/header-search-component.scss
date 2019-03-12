@@ -6,6 +6,8 @@
   &__content {
      &-city {
       width: calc(100% - 742px);
+      display: inline-block;
+      margin: 0 3px;
 
       & .single-select-wrapper {
         margin-bottom: 0;
@@ -19,6 +21,66 @@
       & .items-center {
         display: none;
       }
+     }
+
+     &-startdate {
+      display: inline-block;
+
+      & .vdp-datepicker {
+        & input {
+          height: 48px;
+          width: 177px;
+          border-bottom-left-radius: 6px;
+          border-top-left-radius: 6px;
+          border: none;
+          text-align: center;
+        }
+      }
+     }
+
+     &-endate {
+      display: inline-block;
+
+      & .vdp-datepicker {
+        & input {
+          height: 48px;
+          width: 177px;
+          border-bottom-right-radius: 6px;
+          border-top-right-radius: 6px;
+          border: none;
+          border-left: 1px solid #999;
+          text-align: center;
+        }
+      }
+     }
+
+     &-addroom {
+       display: inline-block;
+       margin: 0 3px;
+
+       & input {
+        width: 240px;
+        height: 48px;
+        border-radius: 6px;
+        border: none;
+       }
+     }
+
+     &-search {
+       display: inline-block;
+
+       & button {
+         border-radius: 6px;
+         background-color: #488bf8;
+         color: #fff;
+         box-shadow: 0 4px 10px 3px rgba(0,0,0,.2);
+         height: 48px;
+         font-size: 14px;
+         font-weight: 700;
+         border: none;
+         text-transform: uppercase;
+         width: 130px;
+       }
      }
   }
 
