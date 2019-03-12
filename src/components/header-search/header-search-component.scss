@@ -1,8 +1,26 @@
 .header-search {
   width: 100%;
   background-color: #515b62;
+  padding: 11px 0;
 
+  &__content {
+     &-city {
+      width: calc(100% - 742px);
 
+      & .single-select-wrapper {
+        margin-bottom: 0;
+      }
+
+      & .search-input {
+        height: 48px;
+        border-radius: 6px;
+      }
+
+      & .items-center {
+        display: none;
+      }
+     }
+  }
 
   @media screen and (min-width: 1440px) {
     &__content {
