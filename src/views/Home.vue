@@ -2,6 +2,7 @@
   <div id="home">
     <header-component></header-component>
     <header-search-component></header-search-component>
+    <header-filter-component></header-filter-component>
   </div>
 </template>
 
@@ -9,6 +10,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import HeaderComponent from "../components/header/header-component.vue";
 import HeaderSearchComponent from "../components/header-search/header-search-component.vue";
+import HeaderFilterComponent from '../components/header-filter/header-filter.component.vue';
 import BootstrapVue from "bootstrap-vue";
 Vue.use(BootstrapVue);
 
@@ -19,7 +21,8 @@ import axios from "axios";
 @Component({
   components: {
     HeaderComponent,
-    HeaderSearchComponent
+    HeaderSearchComponent,
+    HeaderFilterComponent
   }
 })
 export default class Home extends Vue {

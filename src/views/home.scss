@@ -1,4 +1,4 @@
-@import '../assets/styles/fonts.scss';
+@import './font-sicon.scss';
 
 html, body {
   margin: 0;
@@ -18,4 +18,16 @@ ul {
 
 .home {
   background-color: red;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+@media screen and (min-width: 1440px) {
+  .agoda-container {
+    width: 1400px;
+    padding: 0;
+    margin: 0 auto;
+  }
 }

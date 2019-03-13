@@ -32,12 +32,10 @@
         </v-datepicker>
       </div>
       <div class="header-search__content-addroom">
-        <vue-single-select
-          :options="optionCity"
-          :required="true"
-          value="city"
-          placeholder="Nhập điểm du lịch hoặc tên khách sạn"
-        ></vue-single-select>
+        <img src="../../assets/images/svg/users.svg" alt="icon-user" class="icon-user">
+        <label for="input-room" class="label-addroom">2 người lớn</label>
+        <span class="number-room">1 Phòng</span>
+        <input type="text" readonly="true" id="input-room">
       </div>
       <div class="header-search__content-search">
         <input type="button" value="Tìm Kiếm">
@@ -52,6 +50,7 @@ import VueSingleSelect from "vue-single-select";
 import Datepicker from "vuejs-datepicker";
 import { vi } from "vuejs-datepicker/dist/locale";
 
+
 import "./header-search-component.scss";
 
 @Component({
@@ -63,10 +62,13 @@ import "./header-search-component.scss";
 export default class HeaderSearchComponent extends Vue {
   optionCity: Array<any> = ["Seoul", "Gangnam", "Dongdaemun", "VietNam"];
   valueSelect: any = [];
+  items: Array<any> = [];
   state: Object = {
     startDate: new Date(2019, 3, 12),
     endDate: new Date(2019, 4, 12)
   };
+
+  item: Object =  {id: 9, name: 'Lion', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'};
 
   vi: any = vi;
 
@@ -74,6 +76,10 @@ export default class HeaderSearchComponent extends Vue {
     this.$root.$on("mess", function(data: any) {
       console.log("header-search = ", data);
     });
+  }
+
+  getLabel (item) {
+      return item.name
   }
 }
 </script>

@@ -24,6 +24,7 @@
           <a href="#">Ưu đãi cho gia đình</a>
         </li>
          <li class="header__link-item">
+          <i class="ficon ficon-agoda-homes icon-agoda-home"></i>
           <a href="#">agoda Homes</a>
         </li>
       </ul>
