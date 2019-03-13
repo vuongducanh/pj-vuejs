@@ -4,10 +4,13 @@
   padding: 11px 0;
 
   &__content {
+    display: flex;
+
      &-city {
       width: calc(100% - 742px);
       display: inline-block;
       margin: 0 3px;
+      position: relative;
 
       & .single-select-wrapper {
         margin-bottom: 0;
@@ -16,10 +19,28 @@
       & .search-input {
         height: 48px;
         border-radius: 6px;
+        padding-left: 50px;
+        font-size: 16px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       & .items-center {
         display: none;
+      }
+
+      & .icon-search {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 15px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
      }
 
@@ -34,6 +55,27 @@
           border-top-left-radius: 6px;
           border: none;
           text-align: center;
+          padding-left: 20px;
+          font-size: 14px;
+          color: #333;
+          padding-bottom: 20px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        & .icon-check-in {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 15px;
+        }
+
+        & .input-day {
+          position: absolute;
+          bottom: 0;
+          left: 32%;
         }
       }
      }
@@ -50,6 +92,27 @@
           border: none;
           border-left: 1px solid #999;
           text-align: center;
+          color: #333;
+          font-size: 14px;
+          padding-bottom: 20px;
+          padding-left: 20px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        & .icon-check-in {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 15px;
+        }
+
+        & .input-day {
+          position: absolute;
+          bottom: 0;
+          left: 32%;
         }
       }
      }
@@ -69,7 +132,7 @@
      &-search {
        display: inline-block;
 
-       & button {
+       & input {
          border-radius: 6px;
          background-color: #488bf8;
          color: #fff;

@@ -2,6 +2,9 @@
   <div class="header-search">
     <div class="header-search__content">
       <div class="header-search__content-city">
+        <label for="single-select" class="icon-search">
+          <img src="../../assets/images/svg/search-icon.svg">
+        </label>
         <vue-single-select
           :options="optionCity"
           :required="true"
@@ -10,17 +13,34 @@
           placeholder="Nhập điểm du lịch hoặc tên khách sạn"
         ></vue-single-select>
       </div>
+
       <div class="header-search__content-startdate">
-        <v-datepicker :value="state.startDate"></v-datepicker>
+        <v-datepicker :value="state.startDate" :language="vi">
+          <div slot="afterDateInput" class="calender-header">
+            <img src="../../assets/images/svg/check-in.svg" class="icon-check-in">
+            <span class="input-day">Thứ Năm</span>
+          </div>
+        </v-datepicker>
       </div>
+
       <div class="header-search__content-endate">
-        <v-datepicker :value="state.endDate"></v-datepicker>
+        <v-datepicker :value="state.endDate" :language="vi">
+          <div slot="afterDateInput" class="calender-header">
+            <img src="../../assets/images/svg/check-in.svg" class="icon-check-in">
+            <span class="input-day">Thứ sáu</span>
+          </div>
+        </v-datepicker>
       </div>
       <div class="header-search__content-addroom">
-        <input type="text">
+        <vue-single-select
+          :options="optionCity"
+          :required="true"
+          value="city"
+          placeholder="Nhập điểm du lịch hoặc tên khách sạn"
+        ></vue-single-select>
       </div>
       <div class="header-search__content-search">
-        <button>Tìm Kiếm</button>
+        <input type="button" value="Tìm Kiếm">
       </div>
     </div>
   </div>
@@ -30,6 +50,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import VueSingleSelect from "vue-single-select";
 import Datepicker from "vuejs-datepicker";
+import { vi } from "vuejs-datepicker/dist/locale";
 
 import "./header-search-component.scss";
 
@@ -46,6 +67,8 @@ export default class HeaderSearchComponent extends Vue {
     startDate: new Date(2019, 3, 12),
     endDate: new Date(2019, 4, 12)
   };
+
+  vi: any = vi;
 
   created() {
     this.$root.$on("mess", function(data: any) {
