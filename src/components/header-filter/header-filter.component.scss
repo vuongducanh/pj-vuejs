@@ -1,89 +1,141 @@
 .header-filter {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
-    background: #fff;
-    height: 68px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .15);
+  background: #fff;
+  height: 68px;
+  display: flex;
+  padding: 16px 0;
+
+  &__label {
+    display: inline-block;
+    padding-right: 8px;
+  }
+
+  &__popular {
+    display: inline-block;
+  }
+
+  &__text-search {
+    float: right;
+    width: 240px;
+    position: relative;
+
+    & input {
+      border-radius: 18px;
+      border: 1px solid #737373;
+      height: 34px;
+      padding: 6px 12px;
+      padding-left: 37px;
+      color: #2a2a2e;
+      font-size: 14px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    & .text-search-icon {
+      position: absolute;
+      top: 6px;
+      left: 13px;
+    }
+  }
+
+  & .dropdown-toggle {
+    margin-right: 3px;
     display: flex;
-    padding: 16px 0;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 18px;
+    font-size: 14px;
 
-    &__label {
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &:not(:disabled):not(.disabled):active:focus {
+      box-shadow: none;
+    }
+  }
+
+  & .dropdown-menu {
+    &::before {
+      content: "";
+      position: absolute;
+      border-color: #fff transparent;
+      left: 24px;
+      border-width: 0 7px 8px;
+      border-style: solid;
+      top: -9px;
+    }
+
+    &.show {
+      background: #fff;
+      box-shadow: 0 2px 10px 2px rgba(0, 0, 0, .15);
+      border: none;
+      border-radius: 5px;
+      padding: 24px;
+      min-width: 340px;
+    }
+  }
+
+  & .text-long-dot {
+    max-width: 93px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  & .filter-item-vue {
+    & .container-checkbox {
+      position: relative;
+
+      & input {
+        display: none;
+      }
+
+      & .label-checkbox {
+        padding-left: 28px;
         display: inline-block;
-        padding-right: 8px;
-    }
+        color: #5a5b5b;
+        font-size: 12px;
+      }
 
-    &__popular {
-        display: inline-block;
-    }
+      & .checkmark {
+        background: #fff;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        border-radius: 2px;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        border: 1px solid #e8e8e8;
+        font-size: 12px;
+        line-height: 1.3;
+        color: #0283df;
+      }
 
-    &__text-search {
-        float: right;
-        width: 240px;
-        position: relative;
-
-        & input {
-            border-radius: 18px;
-            border: 1px solid #737373;
-            height: 34px;
-            padding: 6px 12px;
-            padding-left: 37px;
-            color: #2a2a2e;
-            font-size: 14px;
-
-            &:focus {
-                outline: none;
-            }
+      & input {
+        &:checked~.checkmark {
+          &::after {
+            content: "\F348";
+          }
         }
-
-        & .text-search-icon {
-         position: absolute;
-         top: 6px;
-         left: 13px;
-        }
+      }
     }
 
-    & .dropdown-toggle {
-        margin-right: 3px;
-        display: flex;
-        align-items: center;
-        padding: 6px 16px;
-        border-radius: 18px;
-        font-size: 14px;
+    &:hover {
+      & .label-checkbox {
+        color: #53b7ff;
+        cursor: pointer;
+      }
 
-        &:focus {
-            outline: none;
-            box-shadow: none;
-        }
-
-        &:not(:disabled):not(.disabled):active:focus {
-            box-shadow: none;
-        }
+      & .checkmark {
+        border-color: #53b7ff;
+      }
     }
-
-    & .dropdown-menu {
-       &::before {
-         content: "";
-         position: absolute;
-         border-color: #fff transparent;
-         left: 24px;
-         border-width: 0 7px 8px;
-         border-style: solid;
-         top: -9px;
-       }
-
-       &.show {
-         background: #fff;
-         box-shadow: 0 2px 10px 2px rgba(0,0,0,.15);
-         border: none;
-         border-radius: 5px;
-         padding: 24px;
-       }
-    }
-
-    & .text-long-dot {
-      max-width: 93px;
-      display: inline-block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      vertical-align: middle;
-    }
+  }
 }

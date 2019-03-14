@@ -9,8 +9,15 @@
             <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding"></i>
             <span>Phổ biến</span>
           </template>
-          <div>An item</div>
-          <div>An item</div>
+          <ul>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Phố Myeong-dong</span>
+                <input type="checkbox" value="ducanh">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+          </ul>
         </b-dropdown>
       </div>
 
@@ -20,8 +27,15 @@
             <i class="ficon ficon-promotion-right dropdown-icon--padding"></i>
             <span>Giá</span>
           </template>
-          <div>An item</div>
-          <div>An item</div>
+          <ul>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Phố Myeong-dong</span>
+                <input type="checkbox" value="ducanh">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+          </ul>
         </b-dropdown>
       </div>
 
@@ -31,8 +45,15 @@
             <i class="ficon ficon-hotel-star dropdown-icon--padding"></i>
             <span>Xếp hạng sao</span>
           </template>
-          <div>An item</div>
-          <div>An item</div>
+          <ul>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Phố Myeong-dong</span>
+                <input type="checkbox" value="ducanh">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+          </ul>
         </b-dropdown>
       </div>
 
@@ -42,8 +63,15 @@
             <i class="ficon ficon-neighborhood dropdown-icon--padding"></i>
             <span>Khu vực</span>
           </template>
-          <div>An item</div>
-          <div>An item</div>
+          <ul>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Phố Myeong-dong</span>
+                <input type="checkbox" value="ducanh">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+          </ul>
         </b-dropdown>
       </div>
 
@@ -53,29 +81,50 @@
             <i class="ficon ficon-solid-24hour-room-service dropdown-icon--padding"></i>
             <span>Tiện nghi</span>
           </template>
-          <div>An item</div>
-          <div>An item</div>
+          <ul>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Phố Myeong-dong</span>
+                <input type="checkbox" value="ducanh">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+          </ul>
         </b-dropdown>
       </div>
 
       <div class="header-filter__reviewscores display-inline-block">
-         <b-dropdown id="ddown-left">
+        <b-dropdown id="ddown-left">
           <template slot="button-content">
             <i class="ficon ficon-user dropdown-icon--padding"></i>
             <span class="text-long-dot">Đánh giá của khách</span>
           </template>
-          <div>An item</div>
-          <div>An item</div>
+          <ul>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Phố Myeong-dong</span>
+                <input type="checkbox" value="ducanh">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+          </ul>
         </b-dropdown>
       </div>
 
       <div class="header-filter__more display-inline-block">
-         <b-dropdown id="ddown-left">
+        <b-dropdown id="ddown-left">
           <template slot="button-content">
             <span>Thêm</span>
           </template>
-          <div>An item</div>
-          <div>An item</div>
+          <ul>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Phố Myeong-dong</span>
+                <input type="checkbox" value="ducanh">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+          </ul>
         </b-dropdown>
       </div>
 
@@ -92,5 +141,6 @@ import { Component, Vue } from "vue-property-decorator";
 import "./header-filter.component.scss";
 
 @Component
-export default class HeaderFilterComponent extends Vue {}
+export default class HeaderFilterComponent extends Vue {
+}
 </script>

@@ -50,7 +50,6 @@ import VueSingleSelect from "vue-single-select";
 import Datepicker from "vuejs-datepicker";
 import { vi } from "vuejs-datepicker/dist/locale";
 
-
 import "./header-search-component.scss";
 
 @Component({
@@ -60,6 +59,7 @@ import "./header-search-component.scss";
   }
 })
 export default class HeaderSearchComponent extends Vue {
+
   optionCity: Array<any> = ["Seoul", "Gangnam", "Dongdaemun", "VietNam"];
   valueSelect: any = [];
   items: Array<any> = [];
