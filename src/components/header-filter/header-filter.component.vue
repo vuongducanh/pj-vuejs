@@ -9,11 +9,40 @@
             <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding"></i>
             <span>Phổ biến</span>
           </template>
+          <span class="filter-menu">Chọn lọc phổ biến ở Hà Nội</span>
           <ul>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Khu Phố Myeong-dong</span>
-                <input type="checkbox" value="ducanh">
+                <span class="label-checkbox">Khu Phố Cổ (172)</span>
+                <input type="checkbox" value="Phố Cổ" v-model="checkedPopular">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Khu Quận Hoàn Kiếm (182)</span>
+                <input type="checkbox" value="Quận Hoàn Kiếm" v-model="checkedPopular">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Thanh toán tại nơi ở (820)</span>
+                <input type="checkbox">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+            <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">Thanh toán tại nơi ở (820)</span>
+                <input type="checkbox">
+                <span class="checkmark ficon"></span>
+              </label>
+            </li>
+             <li class="filter-item-vue">
+              <label class="container-checkbox">
+                <span class="label-checkbox">phù hợp cho gia đình/trẻ em (245)</span>
+                <input type="checkbox">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -142,5 +171,6 @@ import "./header-filter.component.scss";
 
 @Component
 export default class HeaderFilterComponent extends Vue {
+  checkedPopular: Array<any> = [];
 }
 </script>
