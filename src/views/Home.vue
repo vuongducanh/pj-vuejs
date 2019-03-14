@@ -14,7 +14,7 @@ import HeaderFilterComponent from '../components/header-filter/header-filter.com
 import BootstrapVue from "bootstrap-vue";
 Vue.use(BootstrapVue);
 
-import "./custom.scss";
+import "../assets/styles/custom.scss";
 import "./home.scss";
 import axios from "axios";
 

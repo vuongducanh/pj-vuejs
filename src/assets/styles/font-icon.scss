@@ -1,0 +1,100 @@
+@import '../assets/styles/fonts.scss';
+
+// font-icon
+
+.ficon {
+    font-family: icons;
+    font-style: normal;
+}
+
+.ficon-topic-hotel-highlight {
+    &::before {
+        content: "\F492";
+    }
+}
+
+.ficon-agoda-homes {
+    &::before {
+        content: "\F101";
+    }
+}
+
+.ficon-promotion-right {
+    &::before {
+        content: "\F39A";
+    }
+}
+
+.ficon-hotel-star {
+    &::before {
+        content: "\F293";
+    }
+}
+
+.ficon-neighborhood {
+    &::before {
+        content: "\F338";
+    }
+}
+
+.ficon-solid-24hour-room-service {
+    &::before {
+        content: "\F406";
+    }
+}
+
+.ficon-user {
+    &::before {
+        content: "\F4B3";
+    }
+}
+
+.ficon-search-box {
+    &::before {
+        content: "\F3D3";
+    }
+}
+
+.ficon-star-5 {
+    &::before {
+        content: "\F464";
+    }
+}
+
+.ficon-star-4 {
+    &::before {
+        content: "\F462";
+    }
+}
+
+.ficon-star-3 {
+    &::before {
+        content: "\F460";
+    }
+}
+
+.ficon-star-2 {
+    &::before {
+        content: "\F45E";
+    }
+}
+
+.ficon-star-1 {
+    &::before {
+        content: "\F45C";
+    }
+}
+
+.ficon-circle-1 {
+    &::before {
+        content: "\F1A4";
+    }
+}
+
+.dropdown-icon--padding {
+    padding-right: 8px;
+}
+
+.star-orange {
+    color: #ffa726;
+}

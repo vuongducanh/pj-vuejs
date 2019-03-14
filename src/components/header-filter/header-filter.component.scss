@@ -125,6 +125,18 @@
           }
         }
       }
+
+      & .label-checkbox-start {
+        font-size: 13px;
+        padding-left: 28px;
+      }
+
+      & .number-start {
+        padding-left: 7px;
+        display: inline-block;
+        color: #5a5b5b;
+        font-size: 12px;
+      }
     }
 
     &:hover {
@@ -133,8 +145,51 @@
         cursor: pointer;
       }
 
+      & .number-start {
+        color: #53b7ff
+      }
+
       & .checkmark {
         border-color: #53b7ff;
+      }
+    }
+
+    .container-checkbox-radio {
+      position: relative;
+
+      & input {
+        display: none;
+      }
+
+      .checkmark {
+        font-size: 8px;
+        border: 1px solid #e8e8e8;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        line-height: 1.9;
+        position: absolute;
+        top: 5px;
+        border-radius: 16px;
+        left: 0;
+        color: #0283df;
+      }
+
+      .label-checkbox {
+        padding-left: 28px;
+        display: inline-block;
+        color: #5a5b5b;
+        font-size: 12px;
+      }
+    }
+
+    &.active {
+      .container-checkbox-radio {
+        .checkmark {
+          &::after {
+            content: "\F1A4";
+          }
+        }
       }
     }
   }
@@ -143,5 +198,13 @@
     font-size: 14px;
     font-weight: 700;
     color: #333;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+
+    .delete-value-filter {
+      font-size: 12px;
+      float: right;
+    }
   }
 }
