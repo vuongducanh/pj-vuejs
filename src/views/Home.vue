@@ -17,6 +17,7 @@ import BootstrapVue from "bootstrap-vue";
 Vue.use(BootstrapVue);
 
 import "../assets/styles/custom.scss";
+import '../assets/styles/common.scss';
 import "./home.scss";
 import axios from "axios";
 

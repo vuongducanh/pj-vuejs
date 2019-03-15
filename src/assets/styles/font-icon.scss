@@ -55,6 +55,12 @@
     }
 }
 
+.ficon-info-with-circle {
+    &::before {
+        content: "\F2A6";
+    }
+}
+
 .ficon-star-5 {
     &::before {
         content: "\F464";
