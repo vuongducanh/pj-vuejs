@@ -16,13 +16,6 @@
           </div>
         </li>
 
-         <li class="tab-filter__content-item" @click="activeTab='3'" :class="{active:activeTab==='3'}">
-          <div class="custom-checkbox custom--price">
-            <input id="checkbox-tab-family" type="radio" value="Dành cho gia đình" v-model="valueTab">
-            <label for="checkbox-tab-family">Dành cho gia đình</label>
-          </div>
-        </li>
-
         <li class="tab-filter__content-item" @click="activeTab='4'" :class="{active:activeTab==='4'}">
           <div class="custom-checkbox custom--price">
             <input id="checkbox-tab-agoda-home" type="radio" value="Agoda Homes" v-model="valueTab">
@@ -39,7 +32,8 @@
           <input type="checkbox" v-model="switchOnOff">
           <span class="slider round"></span>
         </label>
-        <span class="tab-switch-text">Tắt</span>
+        <span class="tab-switch-text" v-if="!switchOnOff">Tắt</span>
+        <span class="tab-switch-text" v-if="switchOnOff">Bật</span>
       </div>
     </div>
   </div>
@@ -54,9 +48,5 @@ export default class TabFilterComponent extends Vue {
     activeTab: string = '1';
     valueTab: string = 'Mọi lựa chọn';
     switchOnOff: boolean = false;
-
-    updated() {
-      console.log(this.switchOnOff);
-    }
 }
 </script>

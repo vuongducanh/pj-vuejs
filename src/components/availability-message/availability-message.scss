@@ -1,0 +1,9 @@
+.availability-message {
+    width: 100%;
+    min-height: 74px;
+    margin-bottom: 16px;
+
+    & img {
+        box-shadow: 0 2px 3px 0 rgba(112,22,22,.15);
+    }
+}

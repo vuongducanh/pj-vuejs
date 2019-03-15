@@ -61,6 +61,18 @@
     }
 }
 
+.ficon-hotel-people-looking {
+    &::before {
+        content: "\F291";
+    }
+}
+
+.ficon-solid-breakfast {
+    &::before {
+        content: "\F410";
+    }
+}
+
 .ficon-star-5 {
     &::before {
         content: "\F464";

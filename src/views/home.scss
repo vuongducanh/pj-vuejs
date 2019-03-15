@@ -24,6 +24,14 @@ ul {
   display: inline-block;
 }
 
+.home {
+  &__content-filter {
+    width: 1100px;
+    padding: 0;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .agoda-container {
     width: 1400px;
