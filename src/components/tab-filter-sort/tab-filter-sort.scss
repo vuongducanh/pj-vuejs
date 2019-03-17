@@ -1,52 +1,84 @@
 .tab-filter-sort {
   &__content {
-    margin-bottom: 24px;
     margin-top: 30px;
     position: relative;
 
-    &-header {
-      background-color: #f7f7f7;
-      color: #777;
-    }
-
     & ul {
       width: 100%;
+      border: 1px solid #ddd;
+      border-right: none;
     }
 
     &-item {
       display: inline-block;
-      text-align: center;
+      text-align: left;
+      width: 22%;
+      display: table-cell;
+      vertical-align: middle;
+      border-right: 1px solid #ddd;
 
       & input {
         display: none;
       }
 
       & label {
-        background: #f9f9fa;
-        color: #2a2a2e;
-        min-width: 220px;
-        border-right-width: 1px;
-        border-right-style: solid;
-        border-right-color: #dddfe2;
-        padding: 17px 20px;
+        color: #777;
+        width: 100%;
         margin-bottom: 0;
-        font-size: 15px;
-        font-weight: 700;
-        border-top: 1px solid;
-        border-top-color: #dddfe2;
+        padding: 7px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
 
-        &:hover {
+      &:hover {
+        cursor: pointer;
+        color: #75a8f9;
+
+        & label {
           cursor: pointer;
-          color: #75a8f9;
+        }
+      }
+
+      &.active {
+        background-color: #5392f9;
+        & label {
+          color: #fff;
         }
       }
     }
 
-    & .active {
-      & label {
-        background-color: #5392f9;
-        color: #fff;
+    &-header {
+      background-color: #f7f7f7;
+      color: #777;
+      font-size: 12px;
+      width: 12%;
+      border-right: 1px solid #dddfe2;
+      text-transform: uppercase;
+      padding: 0 12px;
+      font-weight: 600;
+
+      &:hover {
+        cursor: inherit;
+        color: #777;
       }
+    }
+  }
+
+  &__barcontainer {
+    padding: 10px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    border: 1px solid #e9ebee;
+    border-left: 5px solid #5392f9;
+
+    & .ficon-couple {
+      font-size: 20px;
+    }
+
+    & span {
+      font-size: 16px;
+      margin-left: 15px;
     }
   }
 }

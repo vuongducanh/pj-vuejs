@@ -73,6 +73,12 @@
     }
 }
 
+.ficon-couple {
+    &::before {
+        content: "\F1D7";
+    }
+}
+
 .ficon-star-5 {
     &::before {
         content: "\F464";
