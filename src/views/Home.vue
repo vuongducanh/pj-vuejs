@@ -12,7 +12,7 @@
         <b-col cols="9">
           <availability-message-component></availability-message-component>
           <tab-filter-sort-component></tab-filter-sort-component>
-          <result-dataComponent></result-dataComponent>
+          <result-dataComponent :dataDisplay="dataDisplay"></result-dataComponent>
         </b-col>
       </b-row>
     </div>
@@ -49,23 +49,23 @@ import axios from "axios";
     ResultDataComponent
   }
 })
+
 export default class Home extends Vue {
-  posts: any = "";
-  errors: any = [];
+  originData: any = "";
+  dataDisplay: Object = {};
+
 
   created() {
-    this.getdata();
+    this.getData();
   }
 
-  getdata() {
-    axios
-      .get("http://demo4528318.mockable.io/demojson")
-      .then(response => {
-        this.posts = response.data;
-      })
-      .catch((e: any) => {
-        this.errors.push(e);
-      });
+  async getData() {
+    const response = await axios.get('http://demo4528318.mockable.io/agodamock');
+
+    this.originData = response.data;
+    this.dataDisplay = this.originData;
+
+    console.log('home',this.originData);
   }
 }
 </script>

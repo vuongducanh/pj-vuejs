@@ -21,10 +21,6 @@ p {
   padding: 0;
 }
 
-.home {
-  background-color: red;
-}
-
 .display-inline-block {
   display: inline-block;
 }
@@ -35,6 +31,10 @@ p {
     padding: 0;
     margin: 0 auto;
   }
+}
+
+.orange-yellow {
+  color: #f3964a;
 }
 
 @media screen and (min-width: 1440px) {

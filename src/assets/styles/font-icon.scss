@@ -91,9 +91,21 @@
     }
 }
 
+.ficon-star-45 {
+    &::before {
+        content: "\F463";
+    }
+}
+
 .ficon-star-3 {
     &::before {
         content: "\F460";
+    }
+}
+
+.ficon-star-35 {
+    &::before {
+        content: "\F461";
     }
 }
 
@@ -103,9 +115,21 @@
     }
 }
 
+.ficon-star-25 {
+    &::before {
+        content: "\F45F";
+    }
+}
+
 .ficon-star-1 {
     &::before {
         content: "\F45C";
+    }
+}
+
+.ficon-star-15 {
+    &::before {
+        content: "\F45D";
     }
 }
 
@@ -114,6 +138,25 @@
         content: "\F1A4";
     }
 }
+
+.ficon-pin-star {
+    &::before {
+        content: "\F37A";
+    }
+}
+
+.ficon-gca-wreath-left {
+    &::before {
+        content: "\F264";
+    }
+}
+
+.ficon-gca-wreath-right {
+    &::before {
+        content: "\F265";
+    }
+}
+
 
 .dropdown-icon--padding {
     padding-right: 8px;

@@ -1,0 +1,74 @@
+.result-data {
+  &__content {
+    background-color: #fff;
+    min-height: 264px;
+    transition: box-shadow .2s ease-in-out;
+    border: 1px solid #ddd;
+    padding: 0 180px 0 246px;
+    margin: 15px 0;
+    display: block;
+
+    &:hover {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .12);
+      text-decoration: none;
+    }
+
+    &-info {
+      padding: 7px 15px;
+      border-right: 1px solid #dddfe2;
+      min-height: 264px;
+    }
+  }
+
+  &__hotelinfo {
+    position: relative;
+
+    &-title {
+      color: #3c3c3c;
+      font-size: 16px;
+      word-wrap: break-word;
+      font-weight: 600;
+      margin-bottom: 0;
+
+      &:hover {
+        text-decoration: underline;
+        color: #00adff;
+      }
+
+      & .hotel-gca {
+        i {
+          color: #f3964a;
+          font-size: 14.3px;
+        }
+
+        span {
+          font-size: 13px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    &-starAreaLine {
+      .start-rating {
+        font-size: 13px;
+        margin-right: 3px;
+      }
+    }
+
+    & .areacity-name {
+      .ficon {
+        font-size: 13px;
+        margin-right: 3px;
+      }
+
+      .areacity-text {
+        font-size: 12px;
+        font-weight: 600;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
