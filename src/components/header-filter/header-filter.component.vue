@@ -6,8 +6,9 @@
       <div class="header-filter__popular display-inline-block">
         <b-dropdown id="ddown-left">
           <template slot="button-content">
-            <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding"></i>
-            <span>Phổ biến</span>
+            <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding" v-if="valuePopular.length == 0"></i>
+            <span class="count-select" v-if="valuePopular.length > 0">{{valuePopular.length}}</span>
+            <span>Phổ biến </span>
           </template>
           <span class="filter-menu">Chọn lọc phổ biến ở Hà Nội</span>
           <ul>
@@ -28,21 +29,21 @@
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Thanh toán tại nơi ở (820)</span>
-                <input type="checkbox">
+                <input type="checkbox" value="1" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Thanh toán tại nơi ở (820)</span>
-                <input type="checkbox">
+                <input type="checkbox" value="2" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">phù hợp cho gia đình/trẻ em (245)</span>
-                <input type="checkbox">
+                <input type="checkbox" value="3" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -58,7 +59,7 @@
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterPrice" v-if="valuePrice.length" class="delete-value-filter">XÓA</a>
+            <a href="javascript:void(0)" @click.prevent.self="deleteFilterPrice" v-show="valuePrice.length" class="delete-value-filter">XÓA</a>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -108,7 +109,7 @@
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterStart" v-if="valueStart.length" class="delete-value-filter">XÓA</a>
+            <a href="javascript:void(0)" @click.prevent.self="deleteFilterStart" v-show="valueStart.length" class="delete-value-filter">XÓA</a>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -171,7 +172,7 @@
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterArea" v-if="valueArea.length" class="delete-value-filter">XÓA</a>
+            <a href="javascript:void(0)" @click.prevent.self="deleteFilterArea" v-show="valueArea.length" class="delete-value-filter">XÓA</a>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -235,7 +236,7 @@
           </template>
            <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterReview" v-if="valueReview.length" class="delete-value-filter">XÓA</a>
+            <a href="javascript:void(0)" @click.prevent.self="deleteFilterReview" v-show="valueReview.length" class="delete-value-filter">XÓA</a>
           </div>
           <ul>
             <li
