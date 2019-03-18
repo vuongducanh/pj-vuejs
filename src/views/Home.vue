@@ -26,9 +26,9 @@ import HeaderSearchComponent from "../components/header-search/header-search-com
 import HeaderFilterComponent from "../components/header-filter/header-filter.component.vue";
 import TabFilterComponent from "../components/tab-filter/tab-filter.vue";
 import SearchPageLeftComponent from "../components/search-page-left/search-page-left.vue";
-import AvailabilityMessageComponent from '../components/availability-message/availability-message.vue';
-import TabFilterSortComponent from '../components/tab-filter-sort/tab-filter-sort.vue';
-import ResultDataComponent from '../components/result-data/result-data.vue';
+import AvailabilityMessageComponent from "../components/availability-message/availability-message.vue";
+import TabFilterSortComponent from "../components/tab-filter-sort/tab-filter-sort.vue";
+import ResultDataComponent from "../components/result-data/result-data.vue";
 
 import "../assets/styles/custom.scss";
 import "../assets/styles/common.scss";
@@ -47,21 +47,47 @@ import axios from "axios";
     ResultDataComponent
   }
 })
-
 export default class Home extends Vue {
   originData: any = "";
-  dataDisplay: Object = {};
+  dataDisplay: Array<any> = [];
 
+  prices: Object = {};
+
+  checkdataFilter: Object = {};
 
   created() {
     this.getData();
+
+    this.$on("valuePriceFilter", this.updateFilter);
   }
 
   async getData() {
-    const response = await axios.get('http://demo4528318.mockable.io/agodamock');
+    const response = await axios.get(
+      "http://demo4528318.mockable.io/agodamock"
+    );
 
     this.originData = response.data;
-    this.dataDisplay = this.originData;
+    this.dataDisplay = this.originData.ResultList;
+  }
+
+  updateFilter(conditions) {
+    function checkFilter(this: any, element) {
+      return this.checkPrice(conditions.conditionPrice, element.DisplayPrice)
+    }
+
+    this.dataDisplay = this.originData.ResultList.filter(checkFilter.bind(this))
+  }
+
+  checkPrice(conditionPrice, price) {
+    if (!conditionPrice.minPrice || !conditionPrice.maxPrice) {
+      return true;
+    }
+
+    if (conditionPrice.minPrice <= price && price <= conditionPrice.maxPrice) {
+      return true;
+    }
+
+    return false;
   }
 }
 </script>

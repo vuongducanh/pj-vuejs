@@ -107,15 +107,17 @@
 
     &-locationPills {
       li {
-        border: 1px solid #000;
-        border-radius: 2px;
-        font-size: 12px;
-        padding: 3px 7px;
-        display: inline-block;
-        color: #000;
-        font-weight: 600;
-        line-height: 14px;
-        margin-right: 3px;
+        span {
+          border: 1px solid #000;
+          border-radius: 2px;
+          font-size: 12px;
+          padding: 3px 7px;
+          display: inline-block;
+          color: #000;
+          font-weight: 600;
+          line-height: 14px;
+          margin-right: 3px;
+        }
       }
     }
 

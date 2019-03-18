@@ -1,6 +1,6 @@
 <template>
   <div class="result-data">
-    <a href="#" class="result-data__content" v-for="(homeItem, index) in dataDisplay.ResultList" :key="index">
+    <a href="#" class="result-data__content" v-for="(homeItem, index) in dataDisplay" :key="index">
       <div class="result-data__gallery">
         <div class="result-data__gallery-big" :style="{'background-image': 'url(' + homeItem.MainPhotoRetinaUrl + ')'}">
         </div>
@@ -35,7 +35,9 @@
           </li>
           <li class="result-data__hotelinfo-locationPills">
             <ul>
-              <li v-for="(itemLocationPills, index) in homeItem.locationHighlightFeatures.PillList" :key="index" v-if="itemLocationPills.Name">{{itemLocationPills.Name}}</li>
+              <li v-for="(itemLocationPills, index) in homeItem.locationHighlightFeatures.PillList" :key="index">
+               <span v-if="itemLocationPills.Name">{{itemLocationPills.Name}}</span>
+              </li>
             </ul>
           </li>
           <li class="result-data__hotelinfo-pill-wrapper">
@@ -77,6 +79,6 @@ import "./result-data.scss";
 
 @Component
 export default class ResultDataComponent extends Vue {
-  @Prop({ type: Object }) dataDisplay: any;
+  @Prop({ type: Array }) dataDisplay: any;
 }
 </script>

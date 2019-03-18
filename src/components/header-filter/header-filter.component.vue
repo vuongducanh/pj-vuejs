@@ -65,35 +65,35 @@
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">0 ₫ - 920.000 ₫ (17)</span>
-                <input type="checkbox" value="0-920.000" v-model="valuePrice">
+                <input type="checkbox" value="0-920000" v-model="valuePrice">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">920.000 ₫ - 1.800.000 ₫ (77)</span>
-                <input type="checkbox" value="920.000-1.800.000" v-model="valuePrice">
+                <input type="checkbox" value="920000-1800000" v-model="valuePrice">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">1.800.000 ₫ - 2.700.000 ₫ (31)</span>
-                <input type="checkbox" value="1.800.000-2.700.000" v-model="valuePrice">
+                <input type="checkbox" value="1800000-2700000" v-model="valuePrice">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">2.700.000 ₫ - 3.700.000 ₫ (10)</span>
-                <input type="checkbox" value="2.700.000-3.700.000" v-model="valuePrice">
+                <input type="checkbox" value="2700000-3700000" v-model="valuePrice">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">3.700.000 ₫ + (5)</span>
-                <input type="checkbox" value="3.700.000" v-model="valuePrice">
+                <input type="checkbox" value="3700000-2147483647" v-model="valuePrice">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -325,7 +325,6 @@ export default class HeaderFilterComponent extends Vue {
   valueReview: string = "";
   activeReview: number = 0;
 
-
   deleteFilterPrice() {
     this.valuePrice = [];
   }
@@ -341,6 +340,31 @@ export default class HeaderFilterComponent extends Vue {
   deleteFilterReview() {
     this.valueReview = '';
     this.activeReview = 0;
+  }
+
+  updated() {
+    this.getMinMaxPrice();
+  }
+
+  getMinMaxPrice() {
+    let fomatValuePrice: Array<any> = [];
+    let newArray: Array<any> = [];
+    let valueObjectFilterPrice: any = {};
+    let price: Object = {};
+
+    for (let i = 0; i < this.valuePrice.length; i++) {
+      fomatValuePrice =  fomatValuePrice.concat(this.valuePrice[i].split('-'))
+    }
+    newArray = [...new Set(fomatValuePrice)].sort((a, b) => a - b);
+
+     price = {
+       conditionPrice: {
+          minPrice:  newArray[0],
+          maxPrice: newArray[newArray.length-1]
+       }
+     }
+
+     this.$parent.$emit('valuePriceFilter', price);
   }
 }
 </script>

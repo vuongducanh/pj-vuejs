@@ -50,9 +50,5 @@ import "./tab-filter-sort.scss";
 export default class TabFilterSortComponent extends Vue {
   activeTab: string = '1';
   valueTabSort: string = 'search-sort-recommended';
-
-  updated() {
-    console.log('valueTabSort', this.valueTabSort);
-  }
 }
 </script>
