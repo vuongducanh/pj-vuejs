@@ -163,6 +163,12 @@
     }
 }
 
+.ficon-negative {
+    &::before {
+        content: "\F336";
+    }
+}
+
 .dropdown-icon--padding {
     padding-right: 8px;
 }

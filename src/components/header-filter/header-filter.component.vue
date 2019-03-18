@@ -4,11 +4,12 @@
       <span class="header-filter__label">Chọn lọc</span>
 
       <div class="header-filter__popular display-inline-block">
-        <b-dropdown id="ddown-left">
+        <b-dropdown id="ddown-left" :class="{'value-select' : valuePopular.length > 0 }">
           <template slot="button-content">
             <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding" v-if="valuePopular.length == 0"></i>
             <span class="count-select" v-if="valuePopular.length > 0">{{valuePopular.length}}</span>
             <span>Phổ biến </span>
+            <i class="ficon ficon-negative icon-close" v-if="valuePopular.length > 0" @click="(valuePopular = [])"></i>
           </template>
           <span class="filter-menu">Chọn lọc phổ biến ở Hà Nội</span>
           <ul>
@@ -52,14 +53,16 @@
       </div>
 
       <div class="header-filter__price display-inline-block">
-        <b-dropdown id="ddown-left">
+        <b-dropdown id="ddown-left" :class="{'value-select' : valuePrice.length > 0 }">
           <template slot="button-content">
             <i class="ficon ficon-promotion-right dropdown-icon--padding"></i>
-            <span>Giá</span>
+            <span v-if="valuePrice.length === 0">Giá</span>
+            <span v-if="valuePrice.length > 0" class="text-long-dot">₫ {{priceMin }} - ₫ {{priceMax}}</span>
+            <i class="ficon ficon-negative icon-close" v-if="valuePrice.length > 0" @click="(valuePrice = [])"></i>
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterPrice" v-show="valuePrice.length" class="delete-value-filter">XÓA</a>
+            <a href="javascript:void(0)" @click.prevent.self="(valuePrice = [])" v-show="valuePrice.length" class="delete-value-filter">XÓA</a>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -109,7 +112,7 @@
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterStart" v-show="valueStart.length" class="delete-value-filter">XÓA</a>
+            <a href="javascript:void(0)" @click.prevent.self="(valueStart = [])" v-show="valueStart.length" class="delete-value-filter">XÓA</a>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -165,62 +168,64 @@
       </div>
 
       <div class="header-filter__area display-inline-block">
-        <b-dropdown id="ddown-left">
+        <b-dropdown id="ddown-left" :class="{'value-select' : valuePopular.length > 0 }">
           <template slot="button-content">
-            <i class="ficon ficon-neighborhood dropdown-icon--padding"></i>
+            <i class="ficon ficon-neighborhood dropdown-icon--padding" v-if="valuePopular.length == 0"></i>
+            <span class="count-select" v-if="valuePopular.length > 0">{{valuePopular.length}}</span>
             <span>Khu vực</span>
+            <i class="ficon ficon-negative icon-close" v-if="valuePopular.length > 0" @click="(valuePopular = [])"></i>
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterArea" v-show="valueArea.length" class="delete-value-filter">XÓA</a>
+            <a href="javascript:void(0)" @click.prevent.self="(valuePopular = [])" v-show="valuePopular.length" class="delete-value-filter">XÓA</a>
           </div>
           <ul>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Phố Cổ (34)</span>
-                <input type="checkbox" value="Phố Cổ" v-model="valueArea">
+                <input type="checkbox" value="Phố Cổ" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Quận Hoàn Kiếm (67)</span>
-                <input type="checkbox" value="Quận Hoàn Kiếm" v-model="valueArea">
+                <input type="checkbox" value="Quận Hoàn Kiếm" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Quận Ba Đình (45)</span>
-                <input type="checkbox" value="Quận Ba Đình" v-model="valueArea">
+                <input type="checkbox" value="Quận Ba Đình" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Quận Cầu Giấy (24)</span>
-                <input type="checkbox" value="Quận Cầu Giấy" v-model="valueArea">
+                <input type="checkbox" value="Quận Cầu Giấy" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Quận Tây Hồ (27)</span>
-                <input type="checkbox" value="Quận Tây Hồ" v-model="valueArea">
+                <input type="checkbox" value="Quận Tây Hồ" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">Quận Hai Bà Trưng (16)</span>
-                <input type="checkbox" value="Quận Hai Bà Trưng" v-model="valueArea">
+                <input type="checkbox" value="Quận Hai Bà Trưng" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">My Dinh (10)</span>
-                <input type="checkbox" value="My Dinh" v-model="valueArea">
+                <input type="checkbox" value="My Dinh" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -229,9 +234,10 @@
       </div>
 
       <div class="header-filter__reviewscores display-inline-block">
-        <b-dropdown id="ddown-left">
+        <b-dropdown id="ddown-left" :class="{'value-select' : valueReview.length > 0 }">
           <template slot="button-content">
-            <i class="ficon ficon-user dropdown-icon--padding"></i>
+            <i class="ficon ficon-user dropdown-icon--padding" v-if="valueReview.length == 0"></i>
+            <span class="count-select" v-if="valueReview.length > 0">1</span>
             <span class="text-long-dot">Đánh giá của khách</span>
           </template>
            <div class="filter-menu">
@@ -325,17 +331,8 @@ export default class HeaderFilterComponent extends Vue {
   valueReview: string = "";
   activeReview: number = 0;
 
-  deleteFilterPrice() {
-    this.valuePrice = [];
-  }
-
-  deleteFilterStart() {
-    this.valueStart = [];
-  }
-
-  deleteFilterArea() {
-    this.valueArea = [];
-  }
+  priceMin: number = 0;
+  priceMax: number = 0;
 
   deleteFilterReview() {
     this.valueReview = '';
@@ -357,10 +354,13 @@ export default class HeaderFilterComponent extends Vue {
     }
     newArray = [...new Set(fomatValuePrice)].sort((a, b) => a - b);
 
+    this.priceMin = newArray[0];
+    this.priceMax = newArray[newArray.length-1]
+
      price = {
        conditionPrice: {
-          minPrice:  newArray[0],
-          maxPrice: newArray[newArray.length-1]
+          minPrice:  this.priceMin,
+          maxPrice: this.priceMax,
        }
      }
 
