@@ -7,6 +7,7 @@
     padding: 0 180px 0 246px;
     margin: 15px 0;
     display: block;
+    position: relative;
 
     &:hover {
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .12);
@@ -17,6 +18,39 @@
       padding: 7px 15px;
       border-right: 1px solid #dddfe2;
       min-height: 264px;
+    }
+
+
+  }
+
+  &__gallery {
+    position: absolute;
+    left: 0;
+    min-width: 264px;
+    min-height: 182px;
+
+    &-big {
+      height: 182px;
+      width: 249px;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      background-size: cover;
+    }
+
+    &-thumbnial {
+      width: 250px;
+
+      &-item {
+        width: 49px;
+        height: 40px;
+        float: left;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        margin-right: 1px;
+        margin-top: 1px;
+      }
     }
   }
 
@@ -68,6 +102,137 @@
         &:hover {
           text-decoration: underline;
         }
+      }
+    }
+
+    &-locationPills {
+      li {
+        border: 1px solid #000;
+        border-radius: 2px;
+        font-size: 12px;
+        padding: 3px 7px;
+        display: inline-block;
+        color: #000;
+        font-weight: 600;
+        line-height: 14px;
+        margin-right: 3px;
+      }
+    }
+
+    &-pill-wrapper {
+      li {
+        border: 1px solid #32a923;
+        display: inline-block;
+        margin-right: 3px;
+        line-height: 14px;
+        color: #32a923;
+        border-radius: 2px;
+        font-size: 12px;
+        padding: 3px 7px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__price {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 180px;
+    padding: 8px;
+    height: 100%;
+
+    &-review {
+      display: inline-block;
+      text-align: right;
+      vertical-align: top;
+
+      .score-text {
+        color: #333;
+        font-size: 14px;
+        overflow-wrap: break-word;
+        line-height: 12px;
+        font-weight: 600;
+      }
+
+      .count {
+        color: #777;
+        font-weight: 600;
+        font-size: 12px;
+        padding-top: 4px;
+        line-height: 12px;
+      }
+    }
+
+    &-item {
+      text-align: right;
+    }
+
+    &-number {
+      max-width: 100px;
+      display: inline-block;
+      position: relative;
+      margin-left: 5px;
+
+      .review-score-number {
+        font-size: 52px;
+        line-height: 44px;
+      }
+
+      .number {
+        color: #fff;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        font-weight: 600;
+        line-height: 44px;
+        font-size: 20px;
+        margin-left: 4px;
+      }
+    }
+
+    &-box {
+      position: absolute;
+      bottom: 0;
+      width: 164px;
+      margin-bottom: 5px;
+      text-align: right;
+
+      .per-night-text {
+        font-size: 10px;
+        color: #737373;
+      }
+
+      .price-final {
+        color: #e12d2d;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 22px;
+      }
+
+      .multi-crossout {
+        color: #737373;
+        font-size: 22px;
+        line-height: 22px;
+        font-weight: 700;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          width: 100%;
+          border-top: 2px solid;
+          transform: rotate(-10deg);
+          border-top-width: 1px;
+        }
+      }
+
+      .price-currency {
+        color: #737373;
+        margin-left: 2px;
+        font-weight: 400;
       }
     }
   }

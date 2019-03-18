@@ -157,6 +157,11 @@
     }
 }
 
+.ficon-review-icon {
+    &::before {
+        content: "\F3B5";
+    }
+}
 
 .dropdown-icon--padding {
     padding-right: 8px;

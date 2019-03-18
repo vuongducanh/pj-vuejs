@@ -47,14 +47,36 @@
     padding: 6px 16px;
     border-radius: 18px;
     font-size: 14px;
+    color: #2a2a2e;
+    background-color: #e9ebee;
+    border: none;
 
     &:focus {
       outline: none;
       box-shadow: none;
     }
 
+    &:hover {
+      background-color: #f8f7f9;
+      color: #5392f9;
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      background-color: #f8f7f9;
+      color: #5392f9;
+    }
+
+
+
     &:not(:disabled):not(.disabled):active:focus {
       box-shadow: none;
+    }
+  }
+
+  .show > .btn-secondary {
+    &.dropdown-toggle {
+      background-color: #f8f7f9;
+      color: #5392f9;
     }
   }
 

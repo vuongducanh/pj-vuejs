@@ -29,8 +29,6 @@ import SearchPageLeftComponent from "../components/search-page-left/search-page-
 import AvailabilityMessageComponent from '../components/availability-message/availability-message.vue';
 import TabFilterSortComponent from '../components/tab-filter-sort/tab-filter-sort.vue';
 import ResultDataComponent from '../components/result-data/result-data.vue';
-import BootstrapVue from "bootstrap-vue";
-Vue.use(BootstrapVue);
 
 import "../assets/styles/custom.scss";
 import "../assets/styles/common.scss";
@@ -64,8 +62,6 @@ export default class Home extends Vue {
 
     this.originData = response.data;
     this.dataDisplay = this.originData;
-
-    console.log('home',this.originData);
   }
 }
 </script>

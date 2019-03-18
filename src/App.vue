@@ -8,8 +8,12 @@
 </template>
 
 <script>
+import { Vue } from "vue-property-decorator";
 import HeaderComponent from '@/components/header/header-component.vue';
 import MainLayout from '@/components/Layout/MainLayout';
+
+import BootstrapVue from "bootstrap-vue";
+Vue.use(BootstrapVue);
 
 export default {
   name: 'App',
