@@ -55,7 +55,7 @@ export default class Home extends Vue {
   created() {
     this.getData();
 
-    this.$on("valuePriceFilter", this.updateFilter);
+    this.$on("updateFilter", this.updateFilter);
   }
 
   async getData() {
@@ -69,7 +69,8 @@ export default class Home extends Vue {
 
   updateFilter(conditions) {
     function checkFilter(this: any, element) {
-      return this.checkPrice(conditions.conditionPrice, element.DisplayPrice)
+      return this.checkPrice(conditions.conditionPrice, element.DisplayPrice) &&
+      this.checkArea(conditions.conditionArea, element.AreaName)
     }
 
     this.dataDisplay = this.originData.ResultList.filter(checkFilter.bind(this))
@@ -80,8 +81,22 @@ export default class Home extends Vue {
       return true;
     }
 
-    if (conditionPrice.minPrice <= price && price <= conditionPrice.maxPrice) {
+    if (parseInt(conditionPrice.minPrice) <= price && price <= parseInt(conditionPrice.maxPrice)) {
       return true;
+    }
+
+    return false;
+  }
+
+  checkArea(conditionArea, areaName) {
+    if (!conditionArea || !conditionArea.length) {
+      return true;
+    }
+
+    for (let i = 0; i < conditionArea.length; i++) {
+      if (conditionArea[i] === areaName ) {
+        return true;
+      }
     }
 
     return false;
