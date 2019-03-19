@@ -7,7 +7,7 @@
         </li>
         <li class="tab-filter-sort__content-item" @click="activeTab='1'" :class="{active:activeTab==='1'}">
           <div class="custom-checkbox">
-            <input id="checkbox-tab-recommended" type="radio" value="search-sort-recommended" v-model="valueTabSort">
+            <input id="checkbox-tab-recommended" type="radio" value="searchDefault" v-model="valueTabSort">
             <label for="checkbox-tab-recommended">gợi ý</label>
           </div>
         </li>
@@ -43,12 +43,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import "./tab-filter-sort.scss";
 
 @Component
 export default class TabFilterSortComponent extends Vue {
   activeTab: string = '1';
-  valueTabSort: string = 'search-sort-recommended';
+  valueTabSort: string = "searchDefault";
+  valueFilter: Object = {};
+
+  @Watch('valueTabSort')
+  onChildChanged(val: any) {
+    this.valueFilter = {
+      conditionFilterSort: val
+    }
+
+    this.$parent.$emit("updateFilter", this.valueFilter);
+  }
 }
 </script>

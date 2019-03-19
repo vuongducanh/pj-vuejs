@@ -109,6 +109,8 @@
       margin-bottom: 3px;
 
       li {
+        display: inline-block;
+
         span {
           border: 1px solid #000;
           border-radius: 2px;
@@ -152,6 +154,7 @@
       display: inline-block;
       text-align: right;
       vertical-align: top;
+      max-width: 100px;
 
       .score-text {
         color: #333;

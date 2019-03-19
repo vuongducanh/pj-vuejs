@@ -366,9 +366,7 @@ export default class HeaderFilterComponent extends Vue {
        }
      }
 
-     this.editFilter = Object.assign(this.editFilter, price);
-
-     this.$parent.$emit('updateFilter', this.editFilter);
+     this.$parent.$emit('updateFilter', price);
   }
 
   getvalueArea () {
@@ -378,9 +376,7 @@ export default class HeaderFilterComponent extends Vue {
       conditionArea: this.valueArea
     }
 
-    this.editFilter = Object.assign(this.editFilter, valueArea);
-
-    this.$parent.$emit('updateFilter', this.editFilter);
+    this.$parent.$emit('updateFilter', valueArea);
   }
 }
 </script>

@@ -47,15 +47,18 @@ import axios from "axios";
 export default class Home extends Vue {
   originData: any = "";
   dataDisplay: Array<any> = [];
-
   prices: Object = {};
-
   checkdataFilter: Object = {};
+
+  saveDataFilter: Object = {};
 
   created() {
     this.getData();
 
-    this.$on("updateFilter", this.updateFilter);
+    this.$on("updateFilter", (data:any) => {
+      this.saveDataFilter = Object.assign(this.saveDataFilter , data);
+      this.updateFilter(this.saveDataFilter);
+    });
   }
 
   async getData() {
@@ -73,11 +76,13 @@ export default class Home extends Vue {
       this.checkArea(conditions.conditionArea, element.AreaName)
     }
 
-    this.dataDisplay = this.originData.ResultList.filter(checkFilter.bind(this))
+    this.dataDisplay = this.originData.ResultList.filter(checkFilter.bind(this));
+    console.log(this.dataDisplay);
+    this.checkTabSort(conditions.conditionFilterSort, this.dataDisplay);
   }
 
   checkPrice(conditionPrice, price) {
-    if (!conditionPrice.minPrice || !conditionPrice.maxPrice) {
+    if (!conditionPrice || !conditionPrice.minPrice || !conditionPrice.maxPrice) {
       return true;
     }
 
@@ -94,12 +99,18 @@ export default class Home extends Vue {
     }
 
     for (let i = 0; i < conditionArea.length; i++) {
-      if (conditionArea[i] === areaName ) {
+      if (conditionArea[i].toLowerCase() === areaName.toLowerCase() ) {
         return true;
       }
     }
 
     return false;
+  }
+
+  checkTabSort(conditionFilterSort, dataSort) {
+    if (conditionFilterSort === "search-sort-price") {
+      dataSort =  dataSort.sort((a, b) => parseFloat(a.FormattedDisplayPrice) - parseFloat(b.FormattedDisplayPrice));
+    }
   }
 }
 </script>
