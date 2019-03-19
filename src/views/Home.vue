@@ -30,9 +30,6 @@ import AvailabilityMessageComponent from "../components/availability-message/ava
 import TabFilterSortComponent from "../components/tab-filter-sort/tab-filter-sort.vue";
 import ResultDataComponent from "../components/result-data/result-data.vue";
 
-import "../assets/styles/custom.scss";
-import "../assets/styles/common.scss";
-import "./home.scss";
 import axios from "axios";
 
 @Component({

@@ -1,3 +1,4 @@
+// Button switch
 .switch {
   position: relative;
   display: inline-block;
@@ -57,8 +58,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-// css for check box
-
+// Button check box
 .container-checkbox {
   position: relative;
 

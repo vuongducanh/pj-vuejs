@@ -1,0 +1,19 @@
+// Bootstrap
+@import './../../../node_modules/bootstrap/scss/bootstrap';
+
+//font
+@import 'basics/fonts';
+@import 'basics/font-icon';
+
+// Setup
+@import 'setup/variables';
+@import 'setup/mixins';
+@import 'setup/typography';
+
+//Basics
+@import 'basics/base';
+@import 'basics/layout';
+
+//Components
+@import 'components/button';
+@import 'components/form';
