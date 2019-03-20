@@ -342,6 +342,8 @@ export default class HeaderFilterComponent extends Vue {
   updated() {
     this.getMinMaxPrice();
     this.getvalueArea();
+
+    console.log(this.valueStart);
   }
 
   getMinMaxPrice() {

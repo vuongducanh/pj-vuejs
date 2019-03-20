@@ -36,6 +36,22 @@
       background-repeat: no-repeat;
       overflow: hidden;
       background-size: cover;
+
+      .text-Badge-list {
+        display: inline;
+        border-radius: 2px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        background-color: #28871c;
+        line-height: 16px;
+        text-align: center;
+        padding: 5px 8px;
+        color: #fff;
+        font-size: 12px;
+        position: absolute;
+        left: -5px;
+        top: 12px;
+      }
     }
 
     &-thumbnial {
@@ -137,6 +153,21 @@
         border-radius: 2px;
         font-size: 12px;
         padding: 3px 7px;
+        font-weight: 600;
+      }
+    }
+
+    &-noCreditCard {
+      .ficon-credit-card-required {
+        margin-right: 7px;
+        font-size: 16px;
+        margin-bottom: 0;
+        color: #2a2a2e;
+      }
+
+      span {
+        color: #2a2a2e;
+        font-size: 12px;
         font-weight: 600;
       }
     }
@@ -242,6 +273,41 @@
         color: #737373;
         margin-left: 2px;
         font-weight: 400;
+      }
+
+      .price-drop {
+        background-color: #d8eed5;
+        border-radius: 2px;
+        display: inline;
+        color: #28871c;
+        padding: 0 4px;
+        position: relative;
+        left: 13px;
+
+        .ficon-price-drop{
+          position: absolute;
+        }
+
+        span {
+          font-size: 10px;
+          text-align: center;
+          margin: 5px 6px 4px 20px;
+        }
+      }
+
+      .limited-rooms {
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        background-color: #e12d2d;
+        text-align: center;
+        margin-top: 4px;
+        right: -13px;
+        border-radius: 2px;
+        font-size: 13px;
+        line-height: 13px;
+        font-weight: 600;
+        padding: 4px 6px;
       }
     }
   }

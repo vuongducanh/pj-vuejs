@@ -2,7 +2,11 @@
   <div class="result-data">
     <a href="#" class="result-data__content" v-for="(homeItem, index) in dataDisplay" :key="index">
       <div class="result-data__gallery">
+
         <div class="result-data__gallery-big" :style="{'background-image': 'url(' + homeItem.MainPhotoRetinaUrl + ')'}">
+          <ul>
+            <li class="text-Badge-list" v-if="homeItem.IsBreakfastIncluded">Có ăn Sáng</li>
+          </ul>
         </div>
         <div class="result-data__gallery-thumbnial">
           <div class="result-data__gallery-thumbnial-item"
@@ -46,6 +50,10 @@
               <li> Thanh toán tại nơi ở</li>
             </ul>
           </li>
+          <li class="result-data__hotelinfo-noCreditCard" v-if="homeItem.IsNoCreditCardRequired">
+            <i class="ficon ficon-credit-card-required" ></i>
+            <span>Không cần thẻ tín dụng</span>
+          </li>
         </ul>
       </div>
       <div class="result-data__price">
@@ -64,7 +72,14 @@
         </div>
 
         <div class="result-data__price-box">
-          <div class="per-night-text" v-if="homeItem.PriceDetail">{{homeItem.PriceDetail.PriceViewText}}</div>
+          <div class="limited-rooms" v-if="homeItem.LimitedRoomsDiscountMessage">
+              {{homeItem.LimitedRoomsDiscountMessage}}
+          </div>
+          <div class="price-drop" v-if="homeItem.LastMinutePriceDrop">
+            <i class="ficon ficon-price-drop"></i>
+            <span>{{homeItem.LastMinutePriceDrop.promotionText}}</span>
+            </div>
+          <div class="per-night-text">Giá mỗi đêm rẻ nhất từ</div>
           <span class="multi-crossout" v-if="homeItem.FormattedCrossedOutPrice && (homeItem.FormattedCrossedOutPrice != 0)">{{homeItem.FormattedCrossedOutPrice}}</span>
           <div class="price-final">{{homeItem.FormattedDisplayPrice}} <span class="price-currency">{{homeItem.DisplayCurrency}}</span></div>
         </div>

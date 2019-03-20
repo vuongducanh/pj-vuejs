@@ -17,7 +17,7 @@
       <i class="ficon ficon-solid-breakfast fiteritem-prefix"></i>
       <label class="container-checkbox">
         <span class="label-checkbox">Xem nơi ở có bữa sáng miễn phí</span>
-        <input type="checkbox" value="breakfast-free" v-model="valuebreakfastFree">
+        <input type="checkbox" value="true" v-model="valuebreakfastFree">
         <span class="checkmark ficon"></span>
       </label>
     </div>
@@ -70,6 +70,15 @@ import "./search-page-left.scss";
 
 @Component
 export default class SearchPageLeftComponent extends Vue {
-  valuebreakfastFree: string = '';
+  valuebreakfastFree: boolean = false;
+  isBreakfast: Object = {};
+
+  updated() {
+    this.isBreakfast = {
+      conditionBreakFastFree: this.valuebreakfastFree
+    }
+
+    this.$parent.$emit("updateFilter", this.isBreakfast);
+  }
 }
 </script>

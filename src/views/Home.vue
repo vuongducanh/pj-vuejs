@@ -65,19 +65,20 @@ export default class Home extends Vue {
     const response = await axios.get(
       "http://demo4528318.mockable.io/agodamock"
     );
-
     this.originData = response.data;
     this.dataDisplay = this.originData.ResultList;
   }
 
   updateFilter(conditions) {
+    console.log(conditions);
+
     function checkFilter(this: any, element) {
       return this.checkPrice(conditions.conditionPrice, element.DisplayPrice) &&
-      this.checkArea(conditions.conditionArea, element.AreaName)
+      this.checkArea(conditions.conditionArea, element.AreaName) &&
+      this.checkbreakfastFree(conditions.conditionBreakFastFree, element.IsBreakfastIncluded)
     }
 
     this.dataDisplay = this.originData.ResultList.filter(checkFilter.bind(this));
-    console.log(this.dataDisplay);
     this.checkTabSort(conditions.conditionFilterSort, this.dataDisplay);
   }
 
@@ -107,9 +108,21 @@ export default class Home extends Vue {
     return false;
   }
 
+  checkbreakfastFree(conditionBreakFastFree, valuebreakfastFree) {
+    if (!conditionBreakFastFree) {
+      return true;
+    }
+
+    if (conditionBreakFastFree && valuebreakfastFree) {
+      return true;
+    }
+
+    return false;
+  }
+
   checkTabSort(conditionFilterSort, dataSort) {
     if (conditionFilterSort === "search-sort-price") {
-      dataSort =  dataSort.sort((a, b) => parseFloat(a.FormattedDisplayPrice) - parseFloat(b.FormattedDisplayPrice));
+      dataSort =  dataSort.sort((a, b) => parseInt(a.FormattedDisplayPrice.split('.').join("")) - parseInt(b.FormattedDisplayPrice.split('.').join("")));
     }
   }
 }

@@ -166,6 +166,18 @@
     }
 }
 
+.ficon-credit-card-required {
+    &::before {
+        content: "\F1DE";
+    }
+}
+
+.ficon-price-drop {
+    &::before {
+        content: "\F38D";
+    }
+}
+
 .dropdown-icon--padding {
     padding-right: 8px;
 }
