@@ -188,6 +188,38 @@
         vertical-align: middle;
       }
     }
+
+    &-agoda-home {
+      .agoda-homes-title {
+        background: linear-gradient(90deg, #ff567d, #fe9a8b);
+        color: #fff;
+        padding: 4px 8px;
+        font-size: 11px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        margin-right: 6px;
+        font-weight: 600;
+      }
+
+      .agoda-homes-text {
+        font-size: 12px;
+        font-weight: 600;
+        padding-right: 3px;
+        padding-left: 0;
+        color: #000;
+      }
+
+      .agoda-homes-badge {
+        padding-right: 5px;
+
+        &::before {
+          content: "\F101";
+          display: inline-block;
+        }
+      }
+    }
   }
 
   &__price {
@@ -301,7 +333,7 @@
         position: relative;
         left: 13px;
 
-        .ficon-price-drop{
+        .ficon-price-drop {
           position: absolute;
         }
 

@@ -4,47 +4,47 @@
       <span class="header-filter__label">Chọn lọc</span>
 
       <div class="header-filter__popular display-inline-block">
-        <b-dropdown id="ddown-left" :class="{'value-select' : valueArea.length > 0 }">
+        <b-dropdown id="ddown-left" :class="{'value-select' : valuePopular.length > 0 }">
           <template slot="button-content">
-            <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding" v-if="valueArea.length == 0"></i>
-            <span class="count-select" v-if="valueArea.length > 0">{{valueArea.length}}</span>
+            <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding" v-if="valuePopular.length == 0"></i>
+            <span class="count-select" v-if="valuePopular.length > 0">{{valuePopular.length}}</span>
             <span>Phổ biến </span>
-            <i class="ficon ficon-negative icon-close" v-if="valueArea.length > 0" @click="(valueArea = [])"></i>
+            <i class="ficon ficon-negative icon-close" v-if="valuePopular.length > 0" @click="(valuePopular = [])"></i>
           </template>
           <span class="filter-menu">Chọn lọc phổ biến ở Hà Nội</span>
           <ul>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Khu Phố Cổ (172)</span>
-                <input type="checkbox" value="Phố Cổ" v-model="valueArea">
+                <span class="label-checkbox">Thanh toán tại nơi ở (1065)</span>
+                <input type="checkbox" value="1" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Khu Quận Hoàn Kiếm (182)</span>
-                <input type="checkbox" value="Quận Hoàn Kiếm" v-model="valueArea">
+                <span class="label-checkbox">phù hợp cho gia đình/trẻ em (787)</span>
+                <input type="checkbox" value="2" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Thanh toán tại nơi ở (820)</span>
-                <input type="checkbox" value="1" v-model="valueArea">
+                <span class="label-checkbox">bãi đậu xe (789)</span>
+                <input type="checkbox" value="3" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Thanh toán tại nơi ở (820)</span>
-                <input type="checkbox" value="2" v-model="valueArea">
+                <span class="label-checkbox">quy định hút thuốc (có phòng không hút thuốc)(206)</span>
+                <input type="checkbox" value="4" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">phù hợp cho gia đình/trẻ em (245)</span>
-                <input type="checkbox" value="3" v-model="valueArea">
+                <span class="label-checkbox">quầy lễ tân 24 giờ (457)</span>
+                <input type="checkbox" value="5" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -183,14 +183,14 @@
           <ul>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Phố Cổ (34)</span>
+                <span class="label-checkbox">Phố Cổ (241)</span>
                 <input type="checkbox" value="Phố Cổ" v-model="valueArea">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
             <li class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Quận Hoàn Kiếm (67)</span>
+                <span class="label-checkbox">Quận Hoàn Kiếm (290)</span>
                 <input type="checkbox" value="Quận Hoàn Kiếm" v-model="valueArea">
                 <span class="checkmark ficon"></span>
               </label>
@@ -325,6 +325,7 @@ import "./header-filter.component.scss";
 
 @Component
 export default class HeaderFilterComponent extends Vue {
+  valuePopular: Array<any> = [];
   valueArea: Array<any> = [];
   valuePrice: Array<any> = [];
   valueStart: Array<any> = [];

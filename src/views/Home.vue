@@ -12,7 +12,7 @@
         <b-col cols="9">
           <availability-message-component></availability-message-component>
           <tab-filter-sort-component></tab-filter-sort-component>
-          <div class="home__result-data" v-for="(itemData, index) in dataDisplay" :key="index" v-show="index < 4">
+          <div class="home__result-data" v-for="(itemData, index) in dataDisplay" :key="index">
             <result-dataComponent :homeItem="itemData"></result-dataComponent>
           </div>
         </b-col>
@@ -77,6 +77,7 @@ export default class Home extends Vue {
       return this.checkPrice(conditions.conditionPrice, element.DisplayPrice) &&
       this.checkArea(conditions.conditionArea, element.AreaName) &&
       this.checkbreakfastFree(conditions.conditionBreakFastFree, element.IsBreakfastIncluded) &&
+      this.checktabFilter(conditions.conditionFilterTab, element.PropertyType) &&
       this.checkStart(conditions.conditionStart, element.StarRating)
     }
 
@@ -134,6 +135,18 @@ export default class Home extends Vue {
     }
 
      return false;
+  }
+
+  checktabFilter(conditionFilterSort, propertyType) {
+    if (!conditionFilterSort || conditionFilterSort === "all") {
+      return true;
+    }
+
+    if (conditionFilterSort === propertyType) {
+      return true;
+    }
+
+    return false;
   }
 
   checkTabSort(conditionFilterSort, dataSort) {

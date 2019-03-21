@@ -4,21 +4,21 @@
       <ul class="tab-filter__content-list">
         <li class="tab-filter__content-item" @click="activeTab='1'" :class="{active:activeTab==='1'}">
           <div class="custom-checkbox custom--price">
-            <input id="checkbox-tab-all" type="radio" value="Mọi lựa chọn" v-model="valueTab">
+            <input id="checkbox-tab-all" type="radio" value="all" v-model="valueTab">
             <label for="checkbox-tab-all">Mọi lựa chọn</label>
           </div>
         </li>
 
          <li class="tab-filter__content-item" @click="activeTab='2'" :class="{active:activeTab==='2'}">
           <div class="custom-checkbox custom--price">
-            <input id="checkbox-tab-hotel" type="radio" value="Khách sạn" v-model="valueTab">
+            <input id="checkbox-tab-hotel" type="radio" value="Hotel" v-model="valueTab">
             <label for="checkbox-tab-hotel">Khách sạn</label>
           </div>
         </li>
 
         <li class="tab-filter__content-item" @click="activeTab='4'" :class="{active:activeTab==='4'}">
           <div class="custom-checkbox custom--price">
-            <input id="checkbox-tab-agoda-home" type="radio" value="Agoda Homes" v-model="valueTab">
+            <input id="checkbox-tab-agoda-home" type="radio" value="Apartment" v-model="valueTab">
             <label for="checkbox-tab-agoda-home">Agoda Homes</label>
           </div>
         </li>
@@ -46,7 +46,17 @@ import "./tab-filter.scss";
 @Component
 export default class TabFilterComponent extends Vue {
     activeTab: string = '1';
-    valueTab: string = 'Mọi lựa chọn';
+    valueTab: string = 'all';
     switchOnOff: boolean = false;
+
+    updated() {
+      let datafilterTab : Object = {}
+
+      datafilterTab = {
+        conditionFilterTab: this.valueTab
+      }
+
+      this.$parent.$emit("updateFilter", datafilterTab);
+    }
 }
 </script>

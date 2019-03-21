@@ -28,6 +28,10 @@
               {{homeItem.HotelDisplayName}}
             </h3>
           </li>
+          <li class="result-data__hotelinfo-agoda-home" v-if="homeItem.PropertyType === 'Apartment' ">
+            <span class="agoda-homes-title"><span class="ficon agoda-homes-badge"></span>{{homeItem.AgodaHomesText}}</span>
+            <span class="agoda-homes-text">{{homeItem.AccommodationType}}</span>
+          </li>
           <li class="result-data__hotelinfo-starAreaLine">
             <span class="start-rating">
               <i class="ficon orange-yellow" :class="'ficon-' + homeItem.StarRatingCss"></i>
