@@ -105,9 +105,10 @@
       </div>
 
       <div class="header-filter__star-rating display-inline-block">
-        <b-dropdown id="ddown-left">
+        <b-dropdown id="ddown-left" :class="{'value-select' : valueStart.length > 0 }">
           <template slot="button-content">
             <i class="ficon ficon-hotel-star dropdown-icon--padding"></i>
+            <span class="number-start">{{valueStart[valueStart.length-1]}}</span>
             <span>Xếp hạng sao</span>
           </template>
           <div class="filter-menu">
@@ -252,7 +253,7 @@
             >
               <label class="container-checkbox-radio">
                 <span class="label-checkbox">9+Trên cả tuyệt vời (253)</span>
-                <input type="radio" value="Trên cả tuyệt vời" v-model="valueReview">
+                <input type="radio" class="toggle-checkbox" value="Trên cả tuyệt vời" v-model="valueReview">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -263,7 +264,7 @@
             >
               <label class="container-checkbox-radio">
                 <span class="label-checkbox">Xuất sắc (737)</span>
-                <input type="radio" value="Xuất sắc" v-model="valueReview">
+                <input type="radio" class="toggle-checkbox" value="Xuất sắc" v-model="valueReview">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -274,7 +275,7 @@
             >
               <label class="container-checkbox-radio">
                 <span class="label-checkbox">Rất tốt (1031)</span>
-                <input type="radio" value="Rất tốt" v-model="valueReview">
+                <input type="radio" class="toggle-checkbox" value="Rất tốt" v-model="valueReview">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -285,7 +286,7 @@
             >
               <label class="container-checkbox-radio">
                 <span class="label-checkbox">6+Hài lòng (1136)</span>
-                <input type="radio" value="Hài lòng" v-model="valueReview">
+                <input type="radio" class="toggle-checkbox" value="Hài lòng" v-model="valueReview">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -332,7 +333,6 @@ export default class HeaderFilterComponent extends Vue {
 
   priceMin: number = 0;
   priceMax: number = 0;
-  editFilter: Object = {};
 
   deleteFilterReview() {
     this.valueReview = '';
@@ -342,8 +342,7 @@ export default class HeaderFilterComponent extends Vue {
   updated() {
     this.getMinMaxPrice();
     this.getvalueArea();
-
-    console.log(this.valueStart);
+    this.getvalueStart();
   }
 
   getMinMaxPrice() {
@@ -379,6 +378,16 @@ export default class HeaderFilterComponent extends Vue {
     }
 
     this.$parent.$emit('updateFilter', valueArea);
+  }
+
+  getvalueStart() {
+    let start: Object ={}
+
+    start = {
+      conditionStart : this.valueStart
+    }
+
+    this.$parent.$emit("updateFilter", start);
   }
 }
 </script>

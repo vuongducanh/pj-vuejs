@@ -171,6 +171,23 @@
         font-weight: 600;
       }
     }
+
+    &-guestRecommended {
+      i {
+        margin-right: 7px;
+        font-size: 16px;
+      }
+
+      span {
+        display: inline;
+        margin: 0;
+        line-height: 1.8;
+        font-size: 12px;
+        font-weight: 600;
+        color: #8660c7;
+        vertical-align: middle;
+      }
+    }
   }
 
   &__price {

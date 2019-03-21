@@ -59,34 +59,3 @@ p {
   margin: 0;
   padding: 0;
 }
-
-.display-inline-block {
-  display: inline-block;
-}
-
-.home {
-  &__content-filter {
-    width: 1100px;
-    padding: 0;
-    margin: 0 auto;
-  }
-}
-
-.orange-yellow {
-  color: #f3964a;
-}
-
-@media screen and (min-width: 1440px) {
-  .agoda-container {
-    width: 1400px;
-    padding: 0;
-    margin: 0 auto;
-  }
-
-  .agoda-content {
-    width: 1100px;
-    padding: 0;
-    margin: 0 auto;
-  }
-}
-

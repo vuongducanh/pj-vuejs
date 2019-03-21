@@ -21,7 +21,7 @@
 
         <li class="tab-filter-sort__content-item" @click="activeTab='3'" :class="{active:activeTab==='3'}">
           <div class="custom-checkbox">
-            <input id="checkbox-tab-agoda-rating" type="radio" value="search-sort-guest-rating" v-model="valueTabSort">
+            <input id="checkbox-tab-agoda-rating" type="radio" value="search-sort-review" v-model="valueTabSort">
             <label for="checkbox-tab-agoda-rating">Các nhận xét hàng đầu</label>
           </div>
         </li>

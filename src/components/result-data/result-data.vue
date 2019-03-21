@@ -1,6 +1,6 @@
 <template>
   <div class="result-data">
-    <a href="#" class="result-data__content" v-for="(homeItem, index) in dataDisplay" :key="index">
+      <a href="#" class="result-data__content">
       <div class="result-data__gallery">
 
         <div class="result-data__gallery-big" :style="{'background-image': 'url(' + homeItem.MainPhotoRetinaUrl + ')'}">
@@ -54,6 +54,10 @@
             <i class="ficon ficon-credit-card-required" ></i>
             <span>Không cần thẻ tín dụng</span>
           </li>
+          <li class="result-data__hotelinfo-guestRecommended" v-if="homeItem.guestRecommended">
+            <i class="ficon" :class="homeItem.guestRecommended.icon"></i>
+            <span>{{homeItem.guestRecommended.text}}</span>
+          </li>
         </ul>
       </div>
       <div class="result-data__price">
@@ -92,8 +96,10 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import "./result-data.scss";
 
-@Component
+@Component({
+ 
+})
 export default class ResultDataComponent extends Vue {
-  @Prop({ type: Array }) dataDisplay: any;
+  @Prop({ type: Object }) homeItem: any;
 }
 </script>

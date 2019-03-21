@@ -72,12 +72,6 @@ export default class HeaderSearchComponent extends Vue {
 
   vi: any = vi;
 
-  created() {
-    this.$root.$on("mess", function(data: any) {
-      console.log("header-search = ", data);
-    });
-  }
-
   getLabel (item) {
       return item.name
   }
