@@ -51,7 +51,7 @@
           <li class="result-data__hotelinfo-pill-wrapper">
             <ul>
               <li v-if="homeItem.IsBreakfastIncluded"> An sáng </li>
-              <li> Thanh toán tại nơi ở</li>
+              <li v-if="homeItem.IsBNPLDuringYourStay"> Thanh toán tại nơi ở</li>
             </ul>
           </li>
           <li class="result-data__hotelinfo-noCreditCard" v-if="homeItem.IsNoCreditCardRequired">

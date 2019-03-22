@@ -78,7 +78,8 @@ export default class Home extends Vue {
       this.checkArea(conditions.conditionArea, element.AreaName) &&
       this.checkbreakfastFree(conditions.conditionBreakFastFree, element.IsBreakfastIncluded) &&
       this.checktabFilter(conditions.conditionFilterTab, element.PropertyType) &&
-      this.checkStart(conditions.conditionStart, element.StarRating)
+      this.checkStart(conditions.conditionStart, element.StarRating) &&
+      this.checkReview(conditions.conditionReview, element.ReviewScore)
     }
 
     this.dataDisplay = this.originData.ResultList.filter(checkFilter.bind(this));
@@ -129,7 +130,7 @@ export default class Home extends Vue {
     }
 
     for (let i = 0; i < conditionStart.length; i++) {
-      if (parseInt(conditionStart[i]) === Math.round(start) || parseInt(conditionStart[i]) === start) {
+      if (parseInt(conditionStart[i]) === Math.floor(start) || parseInt(conditionStart[i]) === start) {
         return true;
       }
     }
@@ -148,6 +149,30 @@ export default class Home extends Vue {
 
     return false;
   }
+
+  checkReview(conditionReview, numberReview) {
+    if (!conditionReview) {
+      return true;
+    }
+
+    if (numberReview >= conditionReview) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // checkDuringStay(conditionDuring, haveDuringYourStay) {
+  //   if (!conditionDuring) {
+  //     return true;
+  //   }
+
+  //   if(conditionDuring[0] == haveDuringYourStay.IsBNPLDuringYourStay) {
+  //     return true;
+  //   }
+
+  //   return false;
+  // }
 
   checkTabSort(conditionFilterSort, dataSort) {
     if (conditionFilterSort === "search-sort-price") {
