@@ -353,6 +353,23 @@ export default class HeaderFilterComponent extends Vue {
   priceMin: number = 0;
   priceMax: number = 0;
 
+  mounted() {
+    this.stickyHeader();
+  }
+
+  stickyHeader() {
+     var header = <HTMLElement> document.querySelector(".header-filter");
+    var sticky = header.offsetTop;
+
+    window.onscroll = function() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+  }
+
   deleteFilterReview() {
     this.valueReview = 0;
     this.activeReview = 0;

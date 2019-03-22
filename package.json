@@ -17,7 +17,6 @@
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
     "vue-single-select": "^1.0.29",
-    "vue-sticky-directive": "0.0.8",
     "vuejs-datepicker": "^1.5.4"
   },
   "devDependencies": {

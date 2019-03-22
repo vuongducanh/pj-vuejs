@@ -1,7 +1,7 @@
 <template>
-  <div id="home" sticky-container>
+  <div id="home">
     <header-search-component></header-search-component>
-    <header-filter-component v-sticky sticky-offset="offset" sticky-side="top"></header-filter-component>
+    <header-filter-component></header-filter-component>
     <tab-filter-component></tab-filter-component>
 
     <div class="home__content-filter">
@@ -12,8 +12,8 @@
         <b-col cols="9">
           <availability-message-component></availability-message-component>
           <tab-filter-sort-component></tab-filter-sort-component>
-          <div class="home__result-data" v-for="(itemData, index) in dataDisplay" :key="index">
-            <result-dataComponent :homeItem="itemData"></result-dataComponent>
+            <div v-for="(itemData, index) in dataDisplay" :key="index" class="home__result-data load-lazy" :class="[index < 2 ? 'show'  : 'hide']">
+              <result-dataComponent :homeItem="itemData"></result-dataComponent>
           </div>
         </b-col>
       </b-row>
@@ -32,8 +32,6 @@ import AvailabilityMessageComponent from "../components/availability-message/ava
 import TabFilterSortComponent from "../components/tab-filter-sort/tab-filter-sort.vue";
 import ResultDataComponent from "../components/result-data/result-data.vue";
 import { URL_API } from "@/constants";
-import Sticky from "vue-sticky-directive";
-Vue.use(Sticky);
 
 import axios from "axios";
 
@@ -66,10 +64,39 @@ export default class Home extends Vue {
     });
   }
 
-  async getData() {
-    const response = await axios.get("http://demo4528318.mockable.io/agodamock");
-    this.originData = response.data;
-    this.dataDisplay = this.originData.ResultList;
+  mounted() {
+      setTimeout(() => {
+         var lazyloadcomponent = document.querySelectorAll(".load-lazy");
+         var lazyloadThrottleTimeout;
+
+         function lazyload() {
+           if (lazyloadThrottleTimeout) {
+             clearTimeout(lazyloadThrottleTimeout);
+           }
+
+           lazyloadThrottleTimeout = setTimeout(function () {
+             var scrollTop = window.pageYOffset;
+             lazyloadcomponent.forEach(function (element: any) {
+               if ((element.offsetTop + 300) < (window.innerHeight + scrollTop)) {
+                 element.classList.remove('hide');
+               }
+             });
+             if (lazyloadcomponent.length == 0) {
+               document.removeEventListener("scroll", lazyload);
+             }
+           }, 30);
+         }
+         document.addEventListener("scroll", lazyload);
+       }, 1000)
+  }
+
+  getData() {
+    axios
+    .get('http://demo4528318.mockable.io/agodamock')
+    .then(response => {
+      this.originData = response.data;
+      this.dataDisplay = this.originData.ResultList;
+    })
   }
 
   updateFilter(conditions) {

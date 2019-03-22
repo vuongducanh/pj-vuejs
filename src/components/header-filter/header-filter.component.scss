@@ -5,6 +5,13 @@
   display: flex;
   padding: 16px 0;
 
+  &.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2
+  }
+
   &__label {
     display: inline-block;
     padding-right: 8px;
