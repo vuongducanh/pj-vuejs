@@ -55,6 +55,8 @@ export default class Home extends Vue {
   checkdataFilter: Object = {};
   saveDataFilter: Object = {};
 
+  loadDataFinish: boolean = false;
+
   created() {
     this.getData();
 
@@ -64,31 +66,31 @@ export default class Home extends Vue {
     });
   }
 
-  mounted() {
-      setTimeout(() => {
-         var lazyloadcomponent = document.querySelectorAll(".load-lazy");
-         var lazyloadThrottleTimeout;
+  updated() {
+    if (this.loadDataFinish) {
+      var lazyloadcomponent = document.querySelectorAll(".load-lazy");
+      var lazyloadThrottleTimeout;
 
-         function lazyload() {
-           if (lazyloadThrottleTimeout) {
-             clearTimeout(lazyloadThrottleTimeout);
-           }
+      function lazyload() {
+        if (lazyloadThrottleTimeout) {
+          clearTimeout(lazyloadThrottleTimeout);
+        }
 
-           lazyloadThrottleTimeout = setTimeout(function () {
-             var scrollTop = window.pageYOffset;
-             lazyloadcomponent.forEach(function (element: any) {
-               if ((element.offsetTop + 300) < (window.innerHeight + scrollTop)) {
-                 element.classList.remove('hide');
-               }
-             });
-             if (lazyloadcomponent.length == 0) {
-               document.removeEventListener("scroll", lazyload);
-             }
-           }, 30);
-         }
-         document.addEventListener("scroll", lazyload);
-       }, 1000)
-  }
+        lazyloadThrottleTimeout = setTimeout(function () {
+          var scrollTop = window.pageYOffset;
+          lazyloadcomponent.forEach(function (element: any) {
+            if ((element.offsetTop + 300) < (window.innerHeight + scrollTop)) {
+              element.classList.remove('hide');
+            }
+          });
+          if (lazyloadcomponent.length == 0) {
+            document.removeEventListener("scroll", lazyload);
+          }
+        }, 30);
+      }
+      document.addEventListener("scroll", lazyload);
+    }
+}
 
   getData() {
     axios
@@ -96,6 +98,7 @@ export default class Home extends Vue {
     .then(response => {
       this.originData = response.data;
       this.dataDisplay = this.originData.ResultList;
+      this.loadDataFinish = true;
     })
   }
 
