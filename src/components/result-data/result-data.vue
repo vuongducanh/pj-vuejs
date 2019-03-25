@@ -8,21 +8,11 @@
           </ul>
         </div>
         <div class="result-data__gallery-thumbnial">
-          <!-- <div class="result-data__gallery-thumbnial-item"
+          <div class="result-data__gallery-thumbnial-item"
           v-for="(itemThumbnial,index) in homeItem.galleryContainerProps.mainImages.slice(0, 10)"
           :key="index"
-          :style="{'background-image': 'url(' + itemThumbnial.imageItemProps.url + ')'}">
-          </div> -->
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item1.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item2.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item3.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item4.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item5.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item6.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item7.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item8.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item9.jpg" alt="">
-          <img class="result-data__gallery-thumbnial-item" src="../../assets/images/thumbnial-item10.jpg" alt="">
+          :style="{'background-image': 'url(' + itemThumbnial.imageItemProps.url + '?s=100x100' + ')'}">
+          </div>
         </div>
       </div>
       <div class="result-data__content-info">
