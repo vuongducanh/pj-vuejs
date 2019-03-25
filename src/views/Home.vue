@@ -72,21 +72,15 @@ export default class Home extends Vue {
       var lazyloadThrottleTimeout;
 
       function lazyload() {
-        if (lazyloadThrottleTimeout) {
-          clearTimeout(lazyloadThrottleTimeout);
-        }
-
-        lazyloadThrottleTimeout = setTimeout(function () {
           var scrollTop = window.pageYOffset;
           lazyloadcomponent.forEach(function (element: any) {
-            if ((element.offsetTop + 300) < (window.innerHeight + scrollTop)) {
+            if ((element.offsetTop + 400) < (window.innerHeight + scrollTop)) {
               element.classList.remove('hide');
             }
           });
           if (lazyloadcomponent.length == 0) {
             document.removeEventListener("scroll", lazyload);
           }
-        }, 30);
       }
       document.addEventListener("scroll", lazyload);
     }
