@@ -1,6 +1,6 @@
 <template>
   <div class="result-data">
-      <a href="#" class="result-data__content">
+    <router-link tag="a" to="/" class="result-data__content">
       <div class="result-data__gallery">
         <div class="result-data__gallery-big" :style="{'background-image': 'url(' + homeItem.MainPhotoRetinaUrl + ')'}">
           <ul>
@@ -101,7 +101,7 @@
           <div class="price-final">{{homeItem.FormattedDisplayPrice}} <span class="price-currency">{{homeItem.DisplayCurrency}}</span></div>
         </div>
       </div>
-    </a>
+    </router-link>
   </div>
 </template>
 

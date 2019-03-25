@@ -1,10 +1,10 @@
 <template>
   <div class="search-left">
-    <a href="#" class="search-left__map">
+    <router-link tag="a" to="/" class="search-left__map">
       <img class="search-left__map-paper" src="https://cdn6.agoda.net/images/MAPS-1213/default/bkg-map-entry.svg">
       <img  class="search-left__map-pin" src="https://cdn6.agoda.net/images/MAPS-1213/default/img-map-pin-red.svg">
       <div class="search-left__map-caption">TRÊN BẢN ĐỒ</div>
-    </a>
+    </router-link>
     <div class="search-left__urgency">
       <i class="ficon ficon-hotel-people-looking search-left__urgency-icon"></i>
       <span class="search-left__urgency-text">

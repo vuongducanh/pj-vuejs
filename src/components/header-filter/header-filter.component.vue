@@ -62,7 +62,7 @@
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="(valuePrice = [])" v-show="valuePrice.length" class="delete-value-filter">XÓA</a>
+             <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valuePrice = [])" v-show="valuePrice.length">XÓA</router-link>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -113,7 +113,7 @@
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="(valueStart = [])" v-show="valueStart.length" class="delete-value-filter">XÓA</a>
+             <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valueStart = [])" v-show="valueStart.length">XÓA</router-link>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -178,7 +178,7 @@
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="(valueArea = [])" v-show="valueArea.length" class="delete-value-filter">XÓA</a>
+            <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valueArea = [])" v-show="valueArea.length">XÓA</router-link>
           </div>
           <ul>
             <li class="filter-item-vue">
@@ -243,7 +243,7 @@
           </template>
            <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-            <a href="javascript:void(0)" @click.prevent.self="deleteFilterReview" v-show="valueReview != 0" class="delete-value-filter">XÓA</a>
+             <router-link tag="a" to="/" class="delete-value-filter"  @click.native="deleteFilterReview" v-show="valueReview != 0">XÓA</router-link>
           </div>
           <ul>
             <li

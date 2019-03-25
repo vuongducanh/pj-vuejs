@@ -2,30 +2,30 @@
   <div class="header">
     <div class="header__item-left">
       <div class="header__logo">
-        <a href="#">
+        <router-link tag="a" to="/">
           <img
             src="https://cdn6.agoda.net/images/MVC/default/agoda-logo.svg"
             alt="Agoda"
             class="header__logo-link"
           >
-        </a>
+        </router-link>
       </div>
       <ul class="header__link">
         <li class="header__link-item">
-          <a href="#">Chỗ ở</a>
+           <router-link tag="a" to="/">Chỗ ở</router-link >
         </li>
          <li class="header__link-item">
-          <a href="#">Chuyến bay</a>
+          <router-link tag="a" to="/">Chuyến bay</router-link >
         </li>
          <li class="header__link-item">
-          <a href="#">Taxi sân bay</a>
+          <router-link tag="a" to="/">Taxi sân bay</router-link >
         </li>
          <li class="header__link-item">
-          <a href="#">Ưu đãi cho gia đình</a>
+          <router-link tag="a" to="/">Ưu đãi cho gia đình</router-link >
         </li>
          <li class="header__link-item">
           <i class="ficon ficon-agoda-homes icon-agoda-home"></i>
-          <a href="#">agoda Homes</a>
+          <router-link tag="a" to="/">agoda Homes</router-link >
         </li>
       </ul>
       <div class="header__EllipsisLinkContainer">
@@ -45,9 +45,7 @@
           <button class="header__group-signin">
             Đăng nhập
           </button>
-          <a href="#" class="header__group-signup" @click="sentData()">
-            Tạo tài khoản
-          </a>
+          <router-link tag="a" to="/" class="header__group-signup"> Tạo tài khoản</router-link>
         </li>
       </ul>
     </div>
@@ -61,10 +59,5 @@ import "./header-component.scss";
 @Component
 export default class HeaderComponent extends Vue {
   data: number = 2;
-
-  sentData() {
-    this.data++;
-    this.$root.$emit('mess',  this.data);
-  }
 }
 </script>
