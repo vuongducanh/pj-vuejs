@@ -6,7 +6,7 @@
   &__item {
     &-left {
       display: flex;
-      align-items: center;
+      align-items: baseline;
     }
 
     &-right {
@@ -36,7 +36,7 @@
       position: absolute;
       bottom: 10px;
       top: 10px;
-      border-right: 1px solid #eee;
+      border-right: 1px solid $gray-light;
     }
 
     &-item {
@@ -53,18 +53,17 @@
 
       & .icon-agoda-home {
         padding-right: 5px;
-        font-size: 13px;
+        font-size: $font-size-link;
       }
 
       & a {
         text-decoration: none;
-        font-size: 13px;
-        color: rgba(0,0,0,.75);
-        font-family: Arial Rounded MT,Arial;
+        font-size: $font-size-link;
+        color: $black-rgba;
 
         &:hover {
           text-decoration: none;
-          color: #75a8f9;
+          color: $link-hover;
         }
       }
     }
@@ -79,12 +78,8 @@
     }
 
     & span {
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background-color: rgba(0,0,0,.75);
-      margin: 0 2px;
+      font-size: 30px;
+      line-height: 0;
     }
   }
 
@@ -94,9 +89,9 @@
     &-signin {
       background: transparent;
       border: none;
-      color: #5392f9;
+      color: $color-link;
       padding: 10px;
-      font-size: 14px;
+      font-size: $font-size-base;
       line-height: 20px;
       font-weight: 600;
       text-transform: uppercase;
@@ -105,12 +100,12 @@
 
     &-signup {
       padding: 10px;
-      border: 1px solid rgb(83, 146, 249);
+      border: 1px solid $border-rgb;
       border-radius: 3px;
       text-decoration: none;
       text-transform: uppercase;
-      color: #5392f9;
-      font-size: 14px;
+      color: $color-link;
+      font-size: $font-size-base;
       font-weight: 600;
       margin: 0 3px;
     }
@@ -118,15 +113,9 @@
 
   &__subgroup {
     display: inline-block;
-
-    &::after {
-      content: "";
-      display: inline-block;
-      border-left: 1px solid red;
-    }
   }
 
-  &__language {
+  &__icon-language {
     background-image: url("//cdn6.agoda.net/images/desktop/bg-sprite-flags.png");
     background-position: -48px -460px;
     width: 24px;

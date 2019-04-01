@@ -179,6 +179,12 @@
     }
 }
 
+.ficon-coupon-card-no-circle {
+    &::before {
+        content: "\F1D9";
+    }
+}
+
 .dropdown-icon--padding {
     padding-right: 8px;
 }

@@ -3,48 +3,20 @@
     <div class="header-filter__content agoda-container">
       <span class="header-filter__label">Chọn lọc</span>
 
-      <div class="header-filter__popular display-inline-block">
-        <b-dropdown id="ddown-left" :class="{'value-select' : getCountPopolar() > 0 }">
+      <div class="header-filter__popular">
+        <b-dropdown id="ddown-left" :class="{'value-select' : valuePopular.length > 0 }">
           <template slot="button-content">
-            <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding" v-if="getCountPopolar() == 0"></i>
-            <span class="count-select" v-if="getCountPopolar() > 0">{{getCountPopolar()}}</span>
+            <i class="ficon ficon-topic-hotel-highlight dropdown-icon--padding" v-if="valuePopular.length == 0"></i>
+            <span class="count-select" v-if="valuePopular.length > 0">{{ valuePopular.length }}</span>
             <span>Phổ biến </span>
-            <i class="ficon ficon-negative icon-close" v-if="getCountPopolar() > 0" @click="removeValuePopular()"></i>
+            <i class="ficon ficon-negative icon-close" v-if="valuePopular.length > 0" @click="valuePopular = []"></i>
           </template>
           <span class="filter-menu">Chọn lọc phổ biến ở Hà Nội</span>
           <ul>
-            <li class="filter-item-vue">
+            <li v-for="(itemPopolar, index) in dataFiler.Popular" :key="index" class="filter-item-vue">
               <label class="container-checkbox">
-                <span class="label-checkbox">Thanh toán tại nơi ở (1065)</span>
-                <input type="checkbox" value="true" v-model="valueDuringYourStay">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">phù hợp cho gia đình/trẻ em (787)</span>
-                <input type="checkbox" value="2" v-model="valuePopular">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">bãi đậu xe (789)</span>
-                <input type="checkbox" value="3" v-model="valuePopular">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">quy định hút thuốc (có phòng không hút thuốc)(206)</span>
-                <input type="checkbox" value="4" v-model="valuePopular">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">quầy lễ tân 24 giờ (457)</span>
-                <input type="checkbox" value="5" v-model="valuePopular">
+                <span class="label-checkbox">{{ itemPopolar.name }} ({{ itemPopolar.count }})</span>
+                <input type="checkbox" :value="itemPopolar.value" v-model="valuePopular">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -52,12 +24,12 @@
         </b-dropdown>
       </div>
 
-      <div class="header-filter__price display-inline-block">
+      <div class="header-filter__price">
         <b-dropdown id="ddown-left" :class="{'value-select' : valuePrice.length > 0 }">
           <template slot="button-content">
             <i class="ficon ficon-promotion-right dropdown-icon--padding"></i>
             <span v-if="valuePrice.length === 0">Giá</span>
-            <span v-if="valuePrice.length > 0" class="text-long-dot">₫ {{priceMin }} - ₫ {{priceMax}}</span>
+            <span v-if="valuePrice.length > 0" class="text-long-dot">₫ {{ priceMin }} - ₫ {{ priceMax }}</span>
             <i class="ficon ficon-negative icon-close" v-if="valuePrice.length > 0" @click="(valuePrice = [])"></i>
           </template>
           <div class="filter-menu">
@@ -104,63 +76,24 @@
         </b-dropdown>
       </div>
 
-      <div class="header-filter__star-rating display-inline-block">
+      <div class="header-filter__star-rating">
         <b-dropdown id="ddown-left" :class="{'value-select' : valueStart.length > 0 }">
           <template slot="button-content">
             <i class="ficon ficon-hotel-star dropdown-icon--padding"></i>
-            <span class="number-start">{{valueStart[valueStart.length-1]}}</span>
-            <span>Xếp hạng sao</span>
+            <span class="number-start">{{ valueStart[valueStart.length-1] }}</span>
+            <span :class="{ 'width-text' : valueStart > 0}">Xếp hạng sao</span>
+            <i class="ficon ficon-negative icon-close" v-if="valueStart.length > 0" @click="(valueStart = [])"></i>
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
              <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valueStart = [])" v-show="valueStart.length">XÓA</router-link>
           </div>
           <ul>
-            <li class="filter-item-vue">
+            <li class="filter-item-vue" v-for="(ItemStart, index) in dataFiler.StarRating" :key="index">
               <label class="container-checkbox">
-                <span class="label-checkbox-start ficon ficon-star-5 star-orange"></span>
-                <span class="number-start">(64)</span>
-                <input type="checkbox" value="5" v-model="valueStart">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox-start ficon ficon-star-4 star-orange"></span>
-                <span class="number-start">(50)</span>
-                <input type="checkbox" value="4" v-model="valueStart">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox-start ficon ficon-star-3 star-orange"></span>
-                <span class="number-start">(341)</span>
-                <input type="checkbox" value="3" v-model="valueStart">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox-start ficon ficon-star-2 star-orange"></span>
-                <span class="number-start">(242)</span>
-                <input type="checkbox" value="2" v-model="valueStart">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox-start ficon ficon-star-1 star-orange"></span>
-                <span class="number-start">(98)</span>
-                <input type="checkbox" value="1" v-model="valueStart">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox-start"></span>
-                <span class="number-start">Chưa xếp hạng (293)</span>
-                <input type="checkbox" value="0" v-model="valueStart">
+                <span class="label-checkbox-start ficon" :class="ItemStart.icon"></span>
+                <span class="number-start">{{ ItemStart.name }} ({{ ItemStart.count }})</span>
+                <input type="checkbox" :value="ItemStart.id" v-model="valueStart">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -168,11 +101,11 @@
         </b-dropdown>
       </div>
 
-      <div class="header-filter__area display-inline-block">
+      <div class="header-filter__area">
         <b-dropdown id="ddown-left" :class="{'value-select' : valueArea.length > 0 }">
           <template slot="button-content">
             <i class="ficon ficon-neighborhood dropdown-icon--padding" v-if="valueArea.length == 0"></i>
-            <span class="count-select" v-if="valueArea.length > 0">{{valueArea.length}}</span>
+            <span class="count-select" v-if="valueArea.length > 0">{{ valueArea.length }}</span>
             <span>Khu vực</span>
             <i class="ficon ficon-negative icon-close" v-if="valueArea.length > 0" @click="(valueArea = [])"></i>
           </template>
@@ -181,52 +114,10 @@
             <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valueArea = [])" v-show="valueArea.length">XÓA</router-link>
           </div>
           <ul>
-            <li class="filter-item-vue">
+            <li class="filter-item-vue" v-for="(itemArea, index) in dataFiler.Area" :key="index">
               <label class="container-checkbox">
-                <span class="label-checkbox">Phố Cổ (241)</span>
-                <input type="checkbox" value="Phố Cổ" v-model="valueArea">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">Quận Hoàn Kiếm (290)</span>
-                <input type="checkbox" value="Quận Hoàn Kiếm" v-model="valueArea">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">Quận Ba Đình (45)</span>
-                <input type="checkbox" value="Quận Ba Đình" v-model="valueArea">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">Quận Cầu Giấy (24)</span>
-                <input type="checkbox" value="Quận Cầu Giấy" v-model="valueArea">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">Quận Tây Hồ (27)</span>
-                <input type="checkbox" value="Quận Tây Hồ" v-model="valueArea">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">Quận Hai Bà Trưng (16)</span>
-                <input type="checkbox" value="Quận Hai Bà Trưng" v-model="valueArea">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">My Dinh (10)</span>
-                <input type="checkbox" value="My Dinh" v-model="valueArea">
+                <span class="label-checkbox">{{ itemArea.name }} ({{ itemArea.count }})</span>
+                <input type="checkbox" :value="itemArea.name" v-model="valueArea">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -234,8 +125,8 @@
         </b-dropdown>
       </div>
 
-      <div class="header-filter__reviewscores display-inline-block">
-        <b-dropdown id="ddown-left" :class="{'value-select' : valueReview != 0 }">
+      <div class="header-filter__reviewscores">
+        <b-dropdown id="ddown-left" :class="{ 'value-select' : valueReview != 0 }">
           <template slot="button-content">
             <i class="ficon ficon-user dropdown-icon--padding" v-if="valueReview === 0"></i>
             <span class="count-select" v-if="valueReview != 0">1</span>
@@ -246,47 +137,10 @@
              <router-link tag="a" to="/" class="delete-value-filter"  @click.native="deleteFilterReview" v-show="valueReview != 0">XÓA</router-link>
           </div>
           <ul>
-            <li
-              class="filter-item-vue"
-              @click="activeReview='1'"
-              :class="{active:activeReview==='1'}"
-            >
+            <li class="filter-item-vue" v-for="(itemReview, index) in dataFiler.ReviewScores" :key="index" @click="activeReview = itemReview.id" :class="{ active:activeReview === itemReview.id }">
               <label class="container-checkbox-radio">
-                <span class="label-checkbox">9+ Trên cả tuyệt vời (253)</span>
-                <input type="radio" class="toggle-checkbox" value="9" v-model.number="valueReview">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li
-              class="filter-item-vue"
-              @click="activeReview='2'"
-              :class="{active:activeReview==='2'}"
-            >
-              <label class="container-checkbox-radio">
-                <span class="label-checkbox">8 + Xuất sắc (737)</span>
-                <input type="radio" class="toggle-checkbox" value="8" v-model.number="valueReview">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li
-              class="filter-item-vue"
-              @click="activeReview='3'"
-              :class="{active:activeReview==='3'}"
-            >
-              <label class="container-checkbox-radio">
-                <span class="label-checkbox">7 + Rất tốt (1031)</span>
-                <input type="radio" class="toggle-checkbox" value="7" v-model.number="valueReview">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li
-              class="filter-item-vue"
-              @click="activeReview='4'"
-              :class="{active:activeReview==='4'}"
-            >
-              <label class="container-checkbox-radio">
-                <span class="label-checkbox">6+ Hài lòng (1136)</span>
-                <input type="radio" class="toggle-checkbox" value="6" v-model.number="valueReview">
+                <span class="label-checkbox">{{ itemReview.title }} {{ itemReview.name }} ({{ itemReview.count }})</span>
+                <input type="radio" class="toggle-checkbox" :value="itemReview.id" v-model.number="valueReview">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -294,7 +148,7 @@
         </b-dropdown>
       </div>
 
-      <div class="header-filter__more display-inline-block">
+      <div class="header-filter__more">
         <b-dropdown id="ddown-left">
           <template slot="button-content">
             <span>Thêm</span>
@@ -337,6 +191,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { DATA_HEADER_FILTER } from "@/constants/data.js";
 import "./header-filter.component.scss";
 
 @Component
@@ -352,6 +207,8 @@ export default class HeaderFilterComponent extends Vue {
 
   priceMin: number = 0;
   priceMax: number = 0;
+
+  dataFiler: any = DATA_HEADER_FILTER;
 
   mounted() {
     this.stickyHeader();
@@ -380,28 +237,7 @@ export default class HeaderFilterComponent extends Vue {
     this.getvalueArea();
     this.getvalueStart();
     this.getValueReview();
-
-    // this.getValueDuringYourStay();
   }
-
-  getCountPopolar() {
-    return (this.valueDuringYourStay.length + this.valuePopular.length);
-  }
-
-  removeValuePopular() {
-    this.valueDuringYourStay = [];
-    this.valuePopular = [];
-  }
-
-  // getValueDuringYourStay() {
-  //   let valueDuring: Object = {}
-
-  //   valueDuring = {
-  //     conditionDuring: this.valueDuringYourStay
-  //   }
-
-  //   this.$parent.$emit("updateFilter", valueDuring);
-  // }
 
   getMinMaxPrice() {
     let fomatValuePrice: Array<any> = [];

@@ -1,6 +1,6 @@
 .header-filter {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .15);
-  background: #fff;
+  background: $white;
   height: 68px;
   display: flex;
   padding: 16px 0;
@@ -12,12 +12,41 @@
     z-index: 2
   }
 
+  &__price {
+    display: inline-block;
+  }
+
+  &__star-rating {
+    display: inline-block;
+
+    .width-text {
+      max-width: 83px;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  }
+
   &__label {
     display: inline-block;
     padding-right: 8px;
   }
 
   &__popular {
+    display: inline-block;
+  }
+
+  &__area {
+    display: inline-block;
+  }
+
+  &__reviewscores {
+    display: inline-block;
+  }
+
+  &__more {
     display: inline-block;
   }
 
@@ -28,11 +57,10 @@
 
     & input {
       border-radius: 18px;
-      border: 1px solid #737373;
+      border: 1px solid $color73;
       height: 34px;
       padding: 6px 12px;
       padding-left: 37px;
-      color: #2a2a2e;
       font-size: 14px;
 
       &:focus {
@@ -54,8 +82,8 @@
     padding: 6px 16px;
     border-radius: 18px;
     font-size: 14px;
-    color: #2a2a2e;
-    background-color: #e9ebee;
+    color: $color2a;
+    background-color: $colore9;
     border: none;
 
     &:focus {
@@ -64,13 +92,13 @@
     }
 
     &:hover {
-      background-color: #f8f7f9;
-      color: #5392f9;
+      background-color: $colorf8;
+      color: $color-link;
     }
 
     &:not(:disabled):not(.disabled):active {
-      background-color: #f8f7f9;
-      color: #5392f9;
+      background-color: $colorf8;
+      color: $color-link;
     }
 
 
@@ -82,8 +110,8 @@
 
   .show>.btn-secondary {
     &.dropdown-toggle {
-      background-color: #f8f7f9;
-      color: #5392f9;
+      background-color: $colorf8;
+      color: $color-link;
     }
   }
 
@@ -91,7 +119,7 @@
     &::before {
       content: "";
       position: absolute;
-      border-color: #fff transparent;
+      border-color: $white transparent;
       left: 24px;
       border-width: 0 7px 8px;
       border-style: solid;
@@ -99,7 +127,7 @@
     }
 
     &.show {
-      background: #fff;
+      background: $white;
       box-shadow: 0 2px 10px 2px rgba(0, 0, 0, .15);
       border: none;
       border-radius: 5px;
@@ -120,16 +148,16 @@
   & .filter-item-vue {
     &:hover {
       & .label-checkbox {
-        color: #53b7ff;
+        color: $link-hover;
         cursor: pointer;
       }
 
       & .number-start {
-        color: #53b7ff
+        color: $link-hover;
       }
 
       & .checkmark {
-        border-color: #53b7ff;
+        border-color: $link-hover;
       }
     }
 
@@ -142,7 +170,7 @@
 
       .checkmark {
         font-size: 8px;
-        border: 1px solid #e8e8e8;
+        border: 1px solid $colore9;
         width: 16px;
         height: 16px;
         text-align: center;
@@ -151,13 +179,13 @@
         top: 5px;
         border-radius: 16px;
         left: 0;
-        color: #0283df;
+        color: $color-link;
       }
 
       .label-checkbox {
         padding-left: 28px;
         display: inline-block;
-        color: #5a5b5b;
+        color: $gray-dark;
         font-size: 12px;
       }
     }
@@ -176,7 +204,7 @@
   & .filter-menu {
     font-size: 14px;
     font-weight: 700;
-    color: #333;
+    color: $gray-dark;
     margin-bottom: 10px;
     display: inline-block;
     width: 100%;
@@ -188,7 +216,7 @@
   }
 
   .count-select {
-    background-color: #0a4867;
+    background-color: $color0a;
     margin-right: 8px;
     width: 20px;
     height: 20px;
@@ -196,7 +224,7 @@
     line-height: 20px;
     display: inline-block;
     border-radius: 50%;
-    color: #fff;
+    color: $white;
     padding: 0px;
   }
 
@@ -207,14 +235,14 @@
   .value-select {
     &.show>.btn-secondary {
       &.dropdown-toggle {
-        background-color: #5392f9;
-        color: #fff;
+        background-color: $color-link;
+        color: $white;
       }
     }
 
     & .dropdown-toggle {
-      background-color: #5392f9;
-      color: #fff;
+      background-color: $color-link;
+      color: $white;
 
       &::after {
         content: none;
@@ -223,8 +251,8 @@
 
     & .icon-close {
       font-size: 8px;
-      background-color: #fff;
-      color: #000;
+      background-color: $white;
+      color: $black;
       border-radius: 50%;
       padding: 4px;
       width: 17px;

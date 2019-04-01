@@ -10,8 +10,8 @@
           :required="true"
           value="city"
           v-model="valueSelect"
-          placeholder="Nhập điểm du lịch hoặc tên khách sạn"
-        ></vue-single-select>
+          placeholder="Nhập điểm du lịch hoặc tên khách sạn">
+        </vue-single-select>
       </div>
 
       <div class="header-search__content-startdate">
@@ -48,6 +48,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import VueSingleSelect from "vue-single-select";
 import Datepicker from "vuejs-datepicker";
+import { HEADER_OPTION_CITY } from "@/constants/data.js";
 import { vi } from "vuejs-datepicker/dist/locale";
 
 import "./header-search-component.scss";
@@ -59,21 +60,13 @@ import "./header-search-component.scss";
   }
 })
 export default class HeaderSearchComponent extends Vue {
-
-  optionCity: Array<any> = ["Seoul", "Gangnam", "Dongdaemun", "VietNam"];
+  optionCity: Array<any> = HEADER_OPTION_CITY;
   valueSelect: any = [];
   items: Array<any> = [];
   state: Object = {
-    startDate: new Date(2019, 3, 12),
+    startDate: new Date(),
     endDate: new Date(2019, 4, 12)
   };
-
-  item: Object =  {id: 9, name: 'Lion', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'};
-
   vi: any = vi;
-
-  getLabel (item) {
-      return item.name
-  }
 }
 </script>
