@@ -162,5 +162,130 @@ export const DATA_HEADER_FILTER = {
       name: "My Dinh",
       count: 63
     }
-  ]
+  ],
+  PriceFilterRange: {
+    CurrencyCode: "₫",
+    CurrencyFormat: "{0} ₫",
+    CurrentMax: 13546660,
+    CurrentMaxPosition: 29,
+    CurrentMin: 0,
+    CurrentMinPosition: 0,
+    FilterId: "PriceFilterRange",
+    HideTag: false,
+    IsDisabledPrice: false,
+    IsShowCallOut: true,
+    Max: 0,
+    Min: 0,
+    Name: "Giá phòng (1 đêm)",
+    Type: 3,
+    BinsPrices: [{
+        Min: 0,
+        Max: 920000,
+        count: 17
+      },
+      {
+        Min: 920000,
+        Max: 1800000,
+        count: 59
+      },
+      {
+        Min: 1800000,
+        Max: 2700000,
+        count: 35
+      },
+      {
+        Min: 2700000,
+        Max: 3700000,
+        count: 35
+      },
+      {
+        Min: 3700000,
+        Max: 2147483647,
+        count: 42
+      }
+    ]
+  },
+  RoomAmenities: {
+    ItemList: [{
+        ChildItems: null,
+        Count: 0,
+        CountFormatted: "0",
+        ExtraData: null,
+        FilterData: {
+          typeId: 17,
+          itemId: 50,
+          columnType: "RoomAmenities"
+        },
+        FilterGroupMetric: null,
+        FilterId: "roomAmenitiesFilterList",
+        FilterItemGroupId: 0,
+        Icon: "ficon-private-pool",
+        Id: 50,
+        IsSelected: false,
+        Name: "hồ bơi riêng",
+        Title: null,
+        Type: null,
+      },
+      {
+        ChildItems: null,
+        Count: 0,
+        CountFormatted: "0",
+        ExtraData: null,
+        FilterData: {
+          typeId: 17,
+          itemId: 25,
+          columnType: "RoomAmenities"
+        },
+        FilterGroupMetric: null,
+        FilterId: "roomAmenitiesFilterList",
+        FilterItemGroupId: 0,
+        Icon: "ficon-air-conditioning",
+        Id: 25,
+        IsSelected: false,
+        Name: "máy điều hòa",
+        Title: null,
+        Type: null,
+      },
+      {
+        ChildItems: null,
+        Count: 0,
+        CountFormatted: "0",
+        ExtraData: null,
+        FilterData: {
+          typeId: 17,
+          itemId: 43,
+          columnType: "RoomAmenities"
+        },
+        FilterGroupMetric: null,
+        FilterId: "roomAmenitiesFilterList",
+        FilterItemGroupId: 0,
+        Icon: "ficon-balcony-terrace",
+        Id: 43,
+        IsSelected: false,
+        Name: "ban công/sân hiên",
+        Title: null,
+        Type: null,
+      },
+      {
+        ChildItems: null,
+        Count: 0,
+        CountFormatted: "0",
+        ExtraData: null,
+        FilterData: {
+          typeId: 17,
+          itemId: 35,
+          columnType: "RoomAmenities"
+        },
+        FilterGroupMetric: null,
+        FilterId: "roomAmenitiesFilterList",
+        FilterItemGroupId: 0,
+        Icon: "ficon-tv",
+        Id: 35,
+        IsSelected: false,
+        Name: "tivi",
+        Title: null,
+        Type: null,
+      }
+    ]
+  }
 }

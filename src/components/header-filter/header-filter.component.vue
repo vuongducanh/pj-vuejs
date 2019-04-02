@@ -37,38 +37,13 @@
              <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valuePrice = [])" v-show="valuePrice.length">XÓA</router-link>
           </div>
           <ul>
-            <li class="filter-item-vue">
+            <li class="filter-item-vue" v-for="(itemPriceFilter, index) in dataFiler.PriceFilterRange.BinsPrices" :key="index">
               <label class="container-checkbox">
-                <span class="label-checkbox">0 ₫ - 920.000 ₫ (17)</span>
-                <input type="checkbox" value="0-920000" v-model="valuePrice">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">920.000 ₫ - 1.800.000 ₫ (77)</span>
-                <input type="checkbox" value="920000-1800000" v-model="valuePrice">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">1.800.000 ₫ - 2.700.000 ₫ (31)</span>
-                <input type="checkbox" value="1800000-2700000" v-model="valuePrice">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">2.700.000 ₫ - 3.700.000 ₫ (10)</span>
-                <input type="checkbox" value="2700000-3700000" v-model="valuePrice">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">3.700.000 ₫ + (5)</span>
-                <input type="checkbox" value="3700000-2147483647" v-model="valuePrice">
+                <span class="label-checkbox">{{ itemPriceFilter.Min }} {{ dataFiler.PriceFilterRange.CurrencyCode }}
+                  <span v-if="index < dataFiler.PriceFilterRange.BinsPrices.length -1">- {{ itemPriceFilter.Max }} {{ dataFiler.PriceFilterRange.CurrencyCode }}</span>
+                  ({{ itemPriceFilter.count }})
+                </span>
+                <input type="checkbox" :value="itemPriceFilter.Min + '-' + itemPriceFilter.Max" v-model="valuePrice">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -154,26 +129,10 @@
             <span>Thêm</span>
           </template>
           <ul>
-            <li class="filter-item-vue">
+            <li class="filter-item-vue" v-for="(itemRoomAmen, index) in dataFiler.RoomAmenities.ItemList" :key="index">
               <label class="container-checkbox">
-                <span class="label-checkbox">Truy cập Internet</span>
-                <input type="checkbox" value="freeWifi">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-
-             <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">hồ bơi riêng</span>
-                <input type="checkbox" value="freeWifi">
-                <span class="checkmark ficon"></span>
-              </label>
-            </li>
-
-            <li class="filter-item-vue">
-              <label class="container-checkbox">
-                <span class="label-checkbox">tivi</span>
-                <input type="checkbox" value="freeWifi">
+                <span class="label-checkbox">{{ itemRoomAmen.Name }}</span>
+                <input type="checkbox" :value="itemRoomAmen.FilterData.itemId" v-model="RoomAmenities">
                 <span class="checkmark ficon"></span>
               </label>
             </li>
@@ -200,8 +159,10 @@ export default class HeaderFilterComponent extends Vue {
   valueArea: Array<any> = [];
   valuePrice: Array<any> = [];
   valueStart: Array<any> = [];
+  RoomAmenities: Array<any> = [];
   valueReview: number = 0;
   activeReview: number = 0;
+  sliderValue: number = 50;
 
   valueDuringYourStay: Array<boolean> = [];
 

@@ -12,8 +12,11 @@
         <b-col cols="9">
           <availability-message-component></availability-message-component>
           <tab-filter-sort-component></tab-filter-sort-component>
-            <div v-for="(itemData, index) in dataDisplay" :key="index" class="home__result-data load-lazy" :class="[index < 2 ? 'show'  : 'hide']">
-              <result-dataComponent :homeItem="itemData"></result-dataComponent>
+          <div v-for="(item, i) in 5" :key="'A' + i">
+             <pl-result-data-component v-if="!loadDataFinish"></pl-result-data-component>
+          </div>
+          <div v-for="(itemData, index) in dataDisplay" :key="index" class="home__result-data load-lazy" :class="[index < 2 ? 'show'  : 'hide']"  >
+            <result-dataComponent :homeItem="itemData" v-if="loadDataFinish"></result-dataComponent>
           </div>
         </b-col>
       </b-row>
@@ -30,6 +33,7 @@ import TabFilterComponent from "../components/tab-filter/tab-filter.vue";
 import SearchPageLeftComponent from "../components/search-page-left/search-page-left.vue";
 import AvailabilityMessageComponent from "../components/availability-message/availability-message.vue";
 import TabFilterSortComponent from "../components/tab-filter-sort/tab-filter-sort.vue";
+import PlResultDataComponent from"../components/pl-result-data/pl-result-data.vue";
 import ResultDataComponent from "../components/result-data/result-data.vue";
 import { URL_API } from "@/constants";
 
@@ -44,7 +48,8 @@ import axios from "axios";
     SearchPageLeftComponent,
     AvailabilityMessageComponent,
     TabFilterSortComponent,
-    ResultDataComponent
+    ResultDataComponent,
+    PlResultDataComponent
   }
 })
 
