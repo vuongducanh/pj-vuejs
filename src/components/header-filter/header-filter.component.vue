@@ -29,12 +29,12 @@
           <template slot="button-content">
             <i class="ficon ficon-promotion-right dropdown-icon--padding"></i>
             <span v-if="valuePrice.length === 0">Giá</span>
-            <span v-if="valuePrice.length > 0" class="text-long-dot">₫ {{ priceMin }} - ₫ {{ priceMax }}</span>
+            <span v-if="valuePrice.length > 0" class="text-long-dot">{{ dataFiler.PriceFilterRange.CurrencyCode }} {{ priceMin }} - {{ dataFiler.PriceFilterRange.CurrencyCode }} {{ priceMax }}</span>
             <i class="ficon ficon-negative icon-close" v-if="valuePrice.length > 0" @click="(valuePrice = [])"></i>
           </template>
           <div class="filter-menu">
             <span class="filter-text">Giá phòng (1 đêm)</span>
-             <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valuePrice = [])" v-show="valuePrice.length">XÓA</router-link>
+             <router-link tag="a" to="/" class="delete-value-filter" @click.native="(valuePrice = [])" v-show="valuePrice.length">XÓA</router-link>
           </div>
           <ul>
             <li class="filter-item-vue" v-for="(itemPriceFilter, index) in dataFiler.PriceFilterRange.BinsPrices" :key="index">
@@ -151,6 +151,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { DATA_HEADER_FILTER } from "@/constants/data.js";
+import axios from "axios";
 import "./header-filter.component.scss";
 
 @Component
@@ -170,6 +171,14 @@ export default class HeaderFilterComponent extends Vue {
   priceMax: number = 0;
 
   dataFiler: any = DATA_HEADER_FILTER;
+
+  created() {
+    axios
+    .get('http://demo4528318.mockable.io/agodamock')
+    .then(response => {
+      console.log(response);
+    })
+  }
 
   mounted() {
     this.stickyHeader();

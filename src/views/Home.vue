@@ -15,7 +15,7 @@
           <div v-for="(item, i) in 5" :key="'A' + i">
              <pl-result-data-component v-if="!loadDataFinish"></pl-result-data-component>
           </div>
-          <div v-for="(itemData, index) in dataDisplay" :key="index" class="home__result-data load-lazy" :class="[index < 2 ? 'show'  : 'hide']"  >
+          <div v-for="(itemData, index) in dataDisplay" :key="index" class="home__result-data">
             <result-dataComponent :homeItem="itemData" v-if="loadDataFinish"></result-dataComponent>
           </div>
         </b-col>
@@ -70,26 +70,6 @@ export default class Home extends Vue {
       this.updateFilter(this.saveDataFilter);
     });
   }
-
-  updated() {
-    if (this.loadDataFinish) {
-      var lazyloadcomponent = document.querySelectorAll(".load-lazy");
-      var lazyloadThrottleTimeout;
-
-      function lazyload() {
-          var scrollTop = window.pageYOffset;
-          lazyloadcomponent.forEach(function (element: any) {
-            if ((element.offsetTop + 400) < (window.innerHeight + scrollTop)) {
-              element.classList.remove('hide');
-            }
-          });
-          if (lazyloadcomponent.length == 0) {
-            document.removeEventListener("scroll", lazyload);
-          }
-      }
-      document.addEventListener("scroll", lazyload);
-    }
-}
 
   getData() {
     axios
@@ -190,18 +170,6 @@ export default class Home extends Vue {
 
     return false;
   }
-
-  // checkDuringStay(conditionDuring, haveDuringYourStay) {
-  //   if (!conditionDuring) {
-  //     return true;
-  //   }
-
-  //   if(conditionDuring[0] == haveDuringYourStay.IsBNPLDuringYourStay) {
-  //     return true;
-  //   }
-
-  //   return false;
-  // }
 
   checkTabSort(conditionFilterSort, dataSort) {
     if (conditionFilterSort === "search-sort-price") {

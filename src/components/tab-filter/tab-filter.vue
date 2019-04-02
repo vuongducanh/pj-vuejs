@@ -33,7 +33,7 @@
           <span class="slider round"></span>
         </label>
         <span class="tab-switch-text" v-if="!switchOnOff">Tắt</span>
-        <span class="tab-switch-text" v-if="switchOnOff">Bật</span>
+        <span class="tab-switch-text" v-else>Bật</span>
       </div>
     </div>
   </div>
