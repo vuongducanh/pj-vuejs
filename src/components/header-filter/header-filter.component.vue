@@ -151,7 +151,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { DATA_HEADER_FILTER } from "@/constants/data.js";
-import axios from "axios";
 import "./header-filter.component.scss";
 
 @Component
@@ -172,20 +171,12 @@ export default class HeaderFilterComponent extends Vue {
 
   dataFiler: any = DATA_HEADER_FILTER;
 
-  created() {
-    axios
-    .get('http://demo4528318.mockable.io/agodamock')
-    .then(response => {
-      console.log(response);
-    })
-  }
-
   mounted() {
     this.stickyHeader();
   }
 
   stickyHeader() {
-     var header = <HTMLElement> document.querySelector(".header-filter");
+    var header = <HTMLElement> document.querySelector(".header-filter");
     var sticky = header.offsetTop;
 
     window.onscroll = function() {
