@@ -8,8 +8,8 @@
     <div class="search-left__urgency">
       <i class="ficon ficon-hotel-people-looking search-left__urgency-icon"></i>
       <span class="search-left__urgency-text">
-        <b class="blue">89</b>
-        du khách hiện đang dùng bản đồ Seoul để kiếm phòng!
+        <b class="blue">{{ listCity.countPassenger }}</b>
+        du khách hiện đang dùng bản đồ Hà Nội để kiếm phòng!
       </span>
     </div>
 
@@ -24,39 +24,15 @@
 
     <div class="search-left__recommended">
       <span class="search-left__recommended-title">
-       Những khách tìm phòng ở Hà Nội cũng cân nhắc các thành phố sau
+       {{ listCity.title }}
       </span>
 
       <ul class="search-left__list">
-        <li class="search-left__list-item">
-          <img src="https://pix6.agoda.net/geo/city/13170/1_13170_02.jpg?s=354x200&p=true">
+        <li class="search-left__list-item" v-for="(item, index) in listCity.items" :key="index">
+          <img :src="item.image">
           <div class="search-left__list-description">
-            <h4>Hồ Chí Minh</h4>
-            <p>8.454 nơi ở có phòng</p>
-          </div>
-        </li>
-
-        <li class="search-left__list-item">
-          <img src="https://pix6.agoda.net/geo/city/17160/1_17160_02.jpg?s=354x200&p=true">
-          <div class="search-left__list-description">
-            <h4>Sapa</h4>
-            <p>538 nơi ở có phòng</p>
-          </div>
-        </li>
-
-        <li class="search-left__list-item">
-          <img src="https://pix6.agoda.net/geo/city/17182/1_17182_02.jpg?s=354x200&p=true">
-          <div class="search-left__list-description">
-            <h4>Hạ Long</h4>
-            <p>1.077 nơi ở có phòng</p>
-          </div>
-        </li>
-
-        <li class="search-left__list-item">
-          <img src="https://pix6.agoda.net/geo/city/3738/1_3738_02.jpg?s=354x200&p=true">
-          <div class="search-left__list-description">
-            <h4>Huế</h4>
-            <p>546 nơi ở có phòng</p>
+            <h4>{{ item.city }}</h4>
+            <p>{{ item.count }} {{ item.text }}</p>
           </div>
         </li>
       </ul>
@@ -66,12 +42,14 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { DATA_HEADER_FILTER } from "@/constants/data.js";
 import "./search-page-left.scss";
 
 @Component
 export default class SearchPageLeftComponent extends Vue {
   valuebreakfastFree: boolean = false;
   isBreakfast: Object = {};
+  listCity: any = DATA_HEADER_FILTER.FilterListCity
 
   updated() {
     this.isBreakfast = {

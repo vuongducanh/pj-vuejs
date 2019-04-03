@@ -13,7 +13,7 @@
           </template>
           <span class="filter-menu">Chọn lọc phổ biến ở Hà Nội</span>
           <ul>
-            <li v-for="(itemPopolar, index) in dataFiler.Popular" :key="index" class="filter-item-vue">
+            <li v-for="(itemPopolar, index) in dataFilter.Popular" :key="index" class="filter-item-vue">
               <label class="container-checkbox">
                 <span class="label-checkbox">{{ itemPopolar.name }} ({{ itemPopolar.count }})</span>
                 <input type="checkbox" :value="itemPopolar.value" v-model="valuePopular">
@@ -29,7 +29,7 @@
           <template slot="button-content">
             <i class="ficon ficon-promotion-right dropdown-icon--padding"></i>
             <span v-if="valuePrice.length === 0">Giá</span>
-            <span v-if="valuePrice.length > 0" class="text-long-dot">{{ dataFiler.PriceFilterRange.CurrencyCode }} {{ priceMin }} - {{ dataFiler.PriceFilterRange.CurrencyCode }} {{ priceMax }}</span>
+            <span v-if="valuePrice.length > 0" class="text-long-dot">{{ dataFilter.PriceFilterRange.CurrencyCode }} {{ priceMin }} - {{ dataFilter.PriceFilterRange.CurrencyCode }} {{ priceMax }}</span>
             <i class="ficon ficon-negative icon-close" v-if="valuePrice.length > 0" @click="(valuePrice = [])"></i>
           </template>
           <div class="filter-menu">
@@ -37,10 +37,10 @@
              <router-link tag="a" to="/" class="delete-value-filter" @click.native="(valuePrice = [])" v-show="valuePrice.length">XÓA</router-link>
           </div>
           <ul>
-            <li class="filter-item-vue" v-for="(itemPriceFilter, index) in dataFiler.PriceFilterRange.BinsPrices" :key="index">
+            <li class="filter-item-vue" v-for="(itemPriceFilter, index) in dataFilter.PriceFilterRange.BinsPrices" :key="index">
               <label class="container-checkbox">
-                <span class="label-checkbox">{{ itemPriceFilter.Min }} {{ dataFiler.PriceFilterRange.CurrencyCode }}
-                  <span v-if="index < dataFiler.PriceFilterRange.BinsPrices.length -1">- {{ itemPriceFilter.Max }} {{ dataFiler.PriceFilterRange.CurrencyCode }}</span>
+                <span class="label-checkbox">{{ itemPriceFilter.Min }} {{ dataFilter.PriceFilterRange.CurrencyCode }}
+                  <span v-if="index < dataFilter.PriceFilterRange.BinsPrices.length -1">- {{ itemPriceFilter.Max }} {{ dataFilter.PriceFilterRange.CurrencyCode }}</span>
                   ({{ itemPriceFilter.count }})
                 </span>
                 <input type="checkbox" :value="itemPriceFilter.Min + '-' + itemPriceFilter.Max" v-model="valuePrice">
@@ -64,7 +64,7 @@
              <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valueStart = [])" v-show="valueStart.length">XÓA</router-link>
           </div>
           <ul>
-            <li class="filter-item-vue" v-for="(ItemStart, index) in dataFiler.StarRating" :key="index">
+            <li class="filter-item-vue" v-for="(ItemStart, index) in dataFilter.StarRating" :key="index">
               <label class="container-checkbox">
                 <span class="label-checkbox-start ficon" :class="ItemStart.icon"></span>
                 <span class="number-start">{{ ItemStart.name }} ({{ ItemStart.count }})</span>
@@ -89,7 +89,7 @@
             <router-link tag="a" to="/" class="delete-value-filter"  @click.native="(valueArea = [])" v-show="valueArea.length">XÓA</router-link>
           </div>
           <ul>
-            <li class="filter-item-vue" v-for="(itemArea, index) in dataFiler.Area" :key="index">
+            <li class="filter-item-vue" v-for="(itemArea, index) in dataFilter.Area" :key="index">
               <label class="container-checkbox">
                 <span class="label-checkbox">{{ itemArea.name }} ({{ itemArea.count }})</span>
                 <input type="checkbox" :value="itemArea.name" v-model="valueArea">
@@ -112,7 +112,7 @@
              <router-link tag="a" to="/" class="delete-value-filter"  @click.native="deleteFilterReview" v-show="valueReview != 0">XÓA</router-link>
           </div>
           <ul>
-            <li class="filter-item-vue" v-for="(itemReview, index) in dataFiler.ReviewScores" :key="index" @click="activeReview = itemReview.id" :class="{ active:activeReview === itemReview.id }">
+            <li class="filter-item-vue" v-for="(itemReview, index) in dataFilter.ReviewScores" :key="index" @click="activeReview = itemReview.id" :class="{ active:activeReview === itemReview.id }">
               <label class="container-checkbox-radio">
                 <span class="label-checkbox">{{ itemReview.title }} {{ itemReview.name }} ({{ itemReview.count }})</span>
                 <input type="radio" class="toggle-checkbox" :value="itemReview.id" v-model.number="valueReview">
@@ -129,7 +129,7 @@
             <span>Thêm</span>
           </template>
           <ul>
-            <li class="filter-item-vue" v-for="(itemRoomAmen, index) in dataFiler.RoomAmenities.ItemList" :key="index">
+            <li class="filter-item-vue" v-for="(itemRoomAmen, index) in dataFilter.RoomAmenities.ItemList" :key="index">
               <label class="container-checkbox">
                 <span class="label-checkbox">{{ itemRoomAmen.Name }}</span>
                 <input type="checkbox" :value="itemRoomAmen.FilterData.itemId" v-model="RoomAmenities">
@@ -169,7 +169,7 @@ export default class HeaderFilterComponent extends Vue {
   priceMin: number = 0;
   priceMax: number = 0;
 
-  dataFiler: any = DATA_HEADER_FILTER;
+  dataFilter: any = DATA_HEADER_FILTER;
 
   mounted() {
     this.stickyHeader();

@@ -287,5 +287,34 @@ export const DATA_HEADER_FILTER = {
         Type: null,
       }
     ]
+  },
+  FilterListCity: {
+    countPassenger: 24,
+    title: "Những khách tìm phòng ở Hà Nội cũng cân nhắc các thành phố sau",
+    items: [{
+        city: "Hồ Chí Minh",
+        count: 8.454,
+        image: "https://pix6.agoda.net/geo/city/13170/1_13170_02.jpg?s=354x200&p=true",
+        text: "nơi ở có phòng"
+      },
+      {
+        city: "Sapa",
+        count: 538,
+        image: "https://pix6.agoda.net/geo/city/17160/1_17160_02.jpg?s=354x200&p=true",
+        text: "nơi ở có phòng"
+      },
+      {
+        city: "Hạ Long",
+        count: 1.077,
+        image: "https://pix6.agoda.net/geo/city/17182/1_17182_02.jpg?s=354x200&p=true",
+        text: "nơi ở có phòng"
+      },
+      {
+        city: "Huế",
+        count: 546,
+        image: "https://pix6.agoda.net/geo/city/3738/1_3738_02.jpg?s=354x200&p=true",
+        text: "nơi ở có phòng"
+      }
+    ]
   }
 }
